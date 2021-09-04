@@ -43,7 +43,7 @@ function Search() {
                      onChange={handleChange}
                   />
 
-                  <SearchBtn />
+                  <SearchButton type="submit" />
                </SearchInnerWrapper>
 
                <Filters>
@@ -88,4 +88,12 @@ const Filters = styled.div`
 
 const SearchInnerWrapper = styled.div`
    position: relative;
+`;
+
+const SearchButton = styled(SearchBtn)`
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: 5px;
+   height: 100%;
 `;

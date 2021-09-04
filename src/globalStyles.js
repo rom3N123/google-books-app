@@ -28,6 +28,7 @@ const styles = createGlobalStyle`
       text-decoration:none;
    }
 
+
    *,
    *::after,
    *::before {
@@ -42,6 +43,7 @@ const styles = createGlobalStyle`
 
    button {
       cursor:pointer;
+      background-color: transparent;
    }
 `;
 
