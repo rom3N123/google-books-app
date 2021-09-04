@@ -22,7 +22,9 @@ function BookItem({ bookInfo, ...props }) {
 
                <Title>{bookInfo.title}</Title>
 
-               <Author>{bookInfo.authors && bookInfo.authors[0]}</Author>
+               <Author>
+                  {bookInfo.authors && bookInfo.authors.join(", ")}
+               </Author>
             </BookInfo>
          </Inner>
       </Wrapper>
