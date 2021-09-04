@@ -12,7 +12,9 @@ function BookItem({ bookInfo, ...props }) {
             />
 
             <BookInfo>
-               <Category>{bookInfo.categories[0]}</Category>
+               <Category>
+                  {bookInfo.categories && bookInfo.categories[0]}
+               </Category>
 
                <Title>{bookInfo.title}</Title>
 
