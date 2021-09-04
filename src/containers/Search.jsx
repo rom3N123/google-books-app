@@ -86,7 +86,7 @@ const Filters = styled.div`
    justify-content: center;
    align-items: center;
    gap: 20px;
-   margin: 10px 0;
+   margin: 25px 0 10px;
 `;
 
 const SearchInnerWrapper = styled.div`
