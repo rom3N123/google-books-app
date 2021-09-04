@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import { BookItem, LoadMoreBtn } from "../components";
 
 function BooksList({ ...props }) {
-   const books = useSelector((state) => state.books);
+   const state = useSelector((state) => state);
 
    return (
       <Wrapper {...props}>
          <Inner>
-            {books ? (
-               books.items.map((book) => (
+            {state.books ? (
+               state.books.items.map((book) => (
                   <BookItem className="book-item" bookInfo={book.volumeInfo} />
                ))
             ) : (
@@ -18,11 +18,11 @@ function BooksList({ ...props }) {
             )}
          </Inner>
 
-         {books && (
+         {(state.books && !state.fetchStatus && (
             <ButtonWrapper>
                <LoadMoreBtn />
             </ButtonWrapper>
-         )}
+         )) || <p>Загрузка..</p>}
       </Wrapper>
    );
 }

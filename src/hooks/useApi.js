@@ -31,11 +31,14 @@ const useApi = () => {
    const loadMoreBooks = async () => {
       const startIndex = state.books.items.length;
 
+      dispatch(setFetch());
       const response = await $api.get(
          "volumes?" + state.query + "&startIndex=" + startIndex
       );
 
       dispatch(addBooks(response.data.items));
+
+      dispatch(unsetFetch());
    };
 
    const getSystemReadableName = (name) => {
