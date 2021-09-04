@@ -39,4 +39,5 @@ const Title = styled.h3`
    color: #fff;
    font-weight: 300;
    letter-spacing: 1px;
+   margin-bottom: 20px;
 `;
