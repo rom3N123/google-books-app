@@ -1,9 +1,10 @@
 import { combineReducers, createStore } from "redux";
-import { books, fetchStatus } from "./reducers";
+import { books, fetchStatus, query } from "./reducers";
 
 const rootReducer = combineReducers({
    books,
    fetchStatus,
+   query,
 });
 
 const store = createStore(
