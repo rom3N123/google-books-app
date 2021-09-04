@@ -1,13 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
+import { useSelector } from "react-redux";
 import { BookItem, LoadMoreBtn } from "../components";
 
-function BooksList() {
+function BooksList({ ...props }) {
    const books = useSelector((state) => state.books);
 
    return (
-      <Wrapper>
+      <Wrapper {...props}>
          <Inner>
             {books ? (
                books.items.map((book) => (
@@ -46,4 +46,5 @@ const Inner = styled.div`
 
 const ButtonWrapper = styled.div`
    text-align: center;
+   margin-top: 20px;
 `;
