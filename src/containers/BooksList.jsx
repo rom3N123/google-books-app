@@ -29,11 +29,12 @@ function BooksList({ ...props }) {
             )}
          </Inner>
 
-         {(state.books && !state.fetchStatus && (
-            <ButtonWrapper>
-               <LoadMoreBtn />
-            </ButtonWrapper>
-         )) || <p>Загрузка..</p>}
+         {state.books &&
+            ((!state.fetchStatus && (
+               <ButtonWrapper>
+                  <LoadMoreBtn />
+               </ButtonWrapper>
+            )) || <Loading>Загрузка..</Loading>)}
       </Wrapper>
    );
 }
@@ -58,4 +59,11 @@ const Inner = styled.div`
 const ButtonWrapper = styled.div`
    text-align: center;
    margin-top: 20px;
+`;
+
+const Loading = styled.p`
+   text-align: center;
+   line-height: 1.5;
+   font-size: 1.3rem;
+   margin: 10px 0;
 `;
