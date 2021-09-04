@@ -6,7 +6,7 @@ import useApi from "../hooks/useApi";
 function Search() {
    const { findBooks } = useApi();
 
-   const categories = [
+   const subjects = [
       "all",
       "art",
       "biography",
@@ -20,7 +20,7 @@ function Search() {
 
    const [formState, setFormState] = React.useState({
       searchValue: "",
-      category: categories[0],
+      subject: subjects[0],
       orderBy: filters[0],
    });
 
@@ -52,8 +52,8 @@ function Search() {
                <Filters>
                   <Select
                      onChange={handleChange}
-                     options={categories}
-                     name="category"
+                     options={subjects}
+                     name="subject"
                   />
 
                   <Select
