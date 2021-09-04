@@ -8,7 +8,7 @@ const books = (state = initialState, action) => {
       case "ADD_BOOKS":
          return {
             ...state,
-            ...action.payload,
+            items: [...state.items, ...action.payload],
          };
 
       default:
