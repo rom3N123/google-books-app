@@ -1,10 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import $api from "../http/axios";
-import { setBooks } from "../redux/actions/books";
+import { setBooks, addBooks } from "../redux/actions/books";
 import { setFetch, unsetFetch } from "../redux/actions/fetch";
 import { setQuery } from "../redux/actions/query";
 
 const useApi = () => {
+   const state = useSelector((state) => state);
+
    const dispatch = useDispatch();
 
    const findBooks = async (params) => {
@@ -26,6 +28,16 @@ const useApi = () => {
       dispatch(unsetFetch());
    };
 
+   const loadMoreBooks = async () => {
+      const startIndex = state.books.items.length;
+
+      const response = await $api.get(
+         "volumes?" + state.query + "&startIndex=" + startIndex
+      );
+
+      dispatch(addBooks(response.data.items));
+   };
+
    const getSystemReadableName = (name) => {
       return name
          .split(" ")
@@ -33,7 +45,7 @@ const useApi = () => {
          .join("+");
    };
 
-   return { findBooks };
+   return { loadMoreBooks, findBooks };
 };
 
 export default useApi;
