@@ -3,5 +3,6 @@ export { default as Search } from "../containers/Search";
 export { default as BooksList } from "./BooksList";
 export { default as BooksCatalog } from "./BooksCatalog";
 export { default as BookPage } from "./BookPage";
-export { default as BookPageImage } from "./BookPageImage";
+export { default as BookPageImage } from "../components/BookPageImage";
 export { default as BookPageInfo } from "./BookPageInfo";
+export { default as BookPageHeader } from "./BookPageHeader";
