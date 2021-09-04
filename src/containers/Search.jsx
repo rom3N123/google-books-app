@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Container, Input, SearchBtn, Select } from "../components";
+import useApi from "../hooks/useApi";
 
 function Search() {
+   const { findBooks } = useApi();
+
    const categories = [
       "all",
       "art",
@@ -18,13 +21,13 @@ function Search() {
    const [formState, setFormState] = React.useState({
       searchValue: "",
       category: categories[0],
-      filter: filters[0],
+      orderBy: filters[0],
    });
 
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      console.log(formState);
+      findBooks(formState);
    };
 
    const handleChange = (e) => {
@@ -54,7 +57,7 @@ function Search() {
                   />
 
                   <Select
-                     name="filter"
+                     name="orderBy"
                      options={filters}
                      onChange={handleChange}
                   />
