@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { useSelector } from "react-redux";
-import { BookPageImage, BookPageInfo } from "../components";
+import { BookPageImage, BookPageInfo } from "../containers";
 
 function BookPage() {
    const book = useSelector((state) => state.book);
