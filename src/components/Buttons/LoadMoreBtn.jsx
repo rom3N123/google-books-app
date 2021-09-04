@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
+import useApi from "../../hooks/useApi";
 
 function LoadMoreBtn() {
-   return <Button>Load more</Button>;
+   const { loadMoreBooks } = useApi();
+
+   return <Button onClick={loadMoreBooks}>Load more</Button>;
 }
 
 export default LoadMoreBtn;
