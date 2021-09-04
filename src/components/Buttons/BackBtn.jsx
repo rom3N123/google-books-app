@@ -5,7 +5,11 @@ import arrowLeftIconSvg from "../../assets/left-arrow.svg";
 
 function BackBtn({ ...props }) {
    return (
-      <IconButton imageSrc={arrowLeftIconSvg} imageAlt={"Back arrow image"} />
+      <IconButton
+         {...props}
+         imageSrc={arrowLeftIconSvg}
+         imageAlt={"Back arrow image"}
+      />
    );
 }
 
