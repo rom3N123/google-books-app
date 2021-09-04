@@ -1,17 +1,28 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BookItem, LoadMoreBtn } from "../components";
+import { setBook } from "../redux/actions/book";
 
 function BooksList({ ...props }) {
    const state = useSelector((state) => state);
+
+   const dispatch = useDispatch();
+
+   const handleBookClick = (book) => {
+      dispatch(setBook(book));
+   };
 
    return (
       <Wrapper {...props}>
          <Inner>
             {state.books ? (
                state.books.items.map((book) => (
-                  <BookItem className="book-item" bookInfo={book.volumeInfo} />
+                  <BookItem
+                     onBookClick={() => handleBookClick(book)}
+                     className="book-item"
+                     bookInfo={book.volumeInfo}
+                  />
                ))
             ) : (
                <p>Здесь будут отображаться книги</p>
