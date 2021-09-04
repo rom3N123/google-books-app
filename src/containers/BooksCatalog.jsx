@@ -4,13 +4,18 @@ import styled from "styled-components/macro";
 import { BooksList } from ".";
 
 function Books() {
-   const areBooksFetching = useSelector((state) => state.fethcStatus);
+   const state = useSelector((state) => state);
 
    return (
       <Wrapper>
-         <h4>Found 500 results</h4>
-
-         {areBooksFetching ? <h1>Загрузка..</h1> : <BooksList />}
+         {state.fetchStatus ? (
+            <h1>Загрузка..</h1>
+         ) : (
+            <>
+               <h4>{123}</h4>
+               <BooksList />
+            </>
+         )}
       </Wrapper>
    );
 }
