@@ -1,21 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
+import { useSelector } from "react-redux";
 import { BooksList } from ".";
+import { Container } from "../components";
 
 function Books() {
    const state = useSelector((state) => state);
 
    return (
       <Wrapper>
-         {state.fetchStatus ? (
-            <h1>Загрузка..</h1>
-         ) : (
-            <>
-               <h4>{123}</h4>
-               <BooksList />
-            </>
-         )}
+         <Container>
+            {state.fetchStatus ? (
+               <h1>Загрузка..</h1>
+            ) : (
+               <>
+                  <h4>{123}</h4>
+                  <BooksList />
+               </>
+            )}
+         </Container>
       </Wrapper>
    );
 }
