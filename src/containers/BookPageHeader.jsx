@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { useDispatch } from "react-redux";
 import { BackBtn } from "../components";
+import { unsetBook } from "../redux/actions/book";
 
 function BookPageHeader() {
+   const dispatch = useDispatch();
+
+   const handleGoBack = () => {
+      dispatch(unsetBook());
+   };
+
    return (
       <Wrapper>
          <Inner>
-            <BackBtn />
+            <BackBtn onClick={handleGoBack} />
 
             <Label>Назад</Label>
          </Inner>
@@ -16,11 +24,14 @@ function BookPageHeader() {
 
 export default BookPageHeader;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+   border-bottom: 1px solid #262626;
+`;
 
 const Inner = styled.div`
    display: flex;
    align-items: center;
+   padding: 10px;
 `;
 
 const Label = styled.p``;
