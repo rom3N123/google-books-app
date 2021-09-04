@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { useSelector } from "react-redux";
-import { BookPageImage, BookPageInfo } from "../containers";
+import { BookPageImage, BookPageInfo, BookPageHeader } from "../containers";
 
 function BookPage() {
    const book = useSelector((state) => state.book);
@@ -9,15 +9,19 @@ function BookPage() {
    return (
       <Wrapper>
          <Inner>
-            <BookPageImage
-               className="book-page-image"
-               bookInfo={book.volumeInfo}
-            />
+            <BookPageHeader />
 
-            <BookPageInfo
-               className="book-page-info"
-               bookInfo={book.volumeInfo}
-            />
+            <ItemsWrapper>
+               <BookPageImage
+                  className="book-page-image"
+                  bookInfo={book.volumeInfo}
+               />
+
+               <BookPageInfo
+                  className="book-page-info"
+                  bookInfo={book.volumeInfo}
+               />
+            </ItemsWrapper>
          </Inner>
       </Wrapper>
    );
@@ -29,7 +33,7 @@ const Wrapper = styled.div``;
 
 const Inner = styled.div`
    display: flex;
-   align-items: center;
+   flex-direction: column;
 
    .book-page-image {
       flex: 1 0 40%;
@@ -38,4 +42,9 @@ const Inner = styled.div`
    .book-page-info {
       flex: 0 1 60%;
    }
+`;
+
+const ItemsWrapper = styled.div`
+   display: flex;
+   align-items: center;
 `;
