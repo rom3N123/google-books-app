@@ -3,11 +3,12 @@ import styled from "styled-components/macro";
 
 import noThumbnail from "../assets/no-thumbnail.jpg";
 
-function BookItem({ bookInfo, ...props }) {
+function BookItem({ onBookClick = null, bookInfo, ...props }) {
    return (
       <Wrapper {...props}>
          <Inner>
             <Thumbnail
+               onClick={onBookClick}
                src={
                   (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) ||
                   noThumbnail
@@ -20,7 +21,7 @@ function BookItem({ bookInfo, ...props }) {
                   {bookInfo.categories && bookInfo.categories[0]}
                </Category>
 
-               <Title>{bookInfo.title}</Title>
+               <Title onClick={onBookClick}>{bookInfo.title}</Title>
 
                <Author>
                   {bookInfo.authors && bookInfo.authors.join(", ")}
