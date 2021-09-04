@@ -7,17 +7,16 @@ const useApi = () => {
    const dispatch = useDispatch();
 
    const findBooks = async (params) => {
-      const newParams = Object.entries(params)
-         .map(([fieldName, fieldValue]) => {
-            return fieldName === "q"
-               ? `${fieldName}=${getSystemReadableName(fieldValue)}`
-               : `${fieldName}=${fieldValue}`;
-         })
-         .join("&");
+      const searchValue = getSystemReadableName(params.searchValue);
+
+      const subject =
+         params.subject === "all" ? "" : `+subject:${params.subject}`;
+
+      const query = `q=${searchValue + subject}&orderBy=${params.orderBy}`;
 
       dispatch(setFetch());
 
-      const response = await $api.get(`volumes?` + newParams);
+      const response = await $api.get(`volumes?` + query);
 
       dispatch(setBooks(response.data));
 
