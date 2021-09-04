@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-function BookPageImage({ imageSrc, imageAlt }) {
+import noThumbnail from "../assets/no-thumbnail.jpg";
+
+function BookPageImage({ bookInfo, ...props }) {
    return (
-      <Wrapper>
-         <Image src={imageSrc} alt={imageAlt} />
+      <Wrapper {...props}>
+         <Image
+            src={
+               (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) ||
+               noThumbnail
+            }
+            alt={bookInfo.title}
+         />
       </Wrapper>
    );
 }
@@ -13,11 +21,13 @@ export default BookPageImage;
 
 const Wrapper = styled.div`
    background-color: #ccc;
-   padding: 20px;
+   padding: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 `;
 
 const Image = styled.img`
-   width: 500px;
-   height: 500px;
+   height: 300px;
    object-fit: contain;
 `;
