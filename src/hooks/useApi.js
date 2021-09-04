@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import $api from "../http/axios";
 import { setBooks } from "../redux/actions/books";
 import { setFetch, unsetFetch } from "../redux/actions/fetch";
+import { setQuery } from "../redux/actions/query";
 
 const useApi = () => {
    const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const useApi = () => {
          params.subject === "all" ? "" : `+subject:${params.subject}`;
 
       const query = `q=${searchValue + subject}&orderBy=${params.orderBy}`;
+
+      dispatch(setQuery(query));
 
       dispatch(setFetch());
 
