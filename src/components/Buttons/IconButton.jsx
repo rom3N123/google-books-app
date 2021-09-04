@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-function IconButton({ imageSrc, imageAlt }) {
+function IconButton({ imageSrc, imageAlt, ...props }) {
    return (
-      <Button>
+      <Button {...props}>
          <Image src={imageSrc} alt={imageAlt} />
       </Button>
    );
