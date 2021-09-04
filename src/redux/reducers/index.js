@@ -1,2 +1,2 @@
-export { default as fetchStatus } from "./fetchStatus";
+export { default as fethStatus } from "./fetchStatusReducer";
 export { default as books } from "./booksReducer";
