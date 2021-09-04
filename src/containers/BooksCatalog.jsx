@@ -33,9 +33,9 @@ export default Books;
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
+   padding-top: 20px;
 `;
 
 const SearchResult = styled.h3`
    text-align: center;
-   margin: 20px 0;
 `;
