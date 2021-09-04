@@ -14,7 +14,12 @@ function Books() {
                <h1>Загрузка..</h1>
             ) : (
                <>
-                  <h4>{123}</h4>
+                  {state.books && (
+                     <SearchResult>
+                        Found {state.books.totalItems} results
+                     </SearchResult>
+                  )}
+
                   <BooksList />
                </>
             )}
@@ -28,4 +33,9 @@ export default Books;
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
+`;
+
+const SearchResult = styled.h3`
+   text-align: center;
+   margin: 20px 0;
 `;
