@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-function Input({ children = null, ...props }) {
+function Input({ ...props }) {
    return <InputField {...props} />;
 }
 
