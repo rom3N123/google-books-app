@@ -2,7 +2,7 @@ const initialState = null;
 
 const book = (state = initialState, action) => {
    switch (action.type) {
-      case "SET__BOOK":
+      case "SET_BOOK":
          return action.payload;
 
       case "UNSET_BOOK":
