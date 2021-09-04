@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+import noThumbnail from "../assets/no-thumbnail.jpg";
+
 function BookItem({ bookInfo, ...props }) {
-   console.log(bookInfo);
    return (
       <Wrapper {...props}>
          <Inner>
             <Thumbnail
-               src={bookInfo.imageLinks.thumbnail}
+               src={
+                  (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) ||
+                  noThumbnail
+               }
                alt={bookInfo.title}
             />
 
@@ -18,7 +22,7 @@ function BookItem({ bookInfo, ...props }) {
 
                <Title>{bookInfo.title}</Title>
 
-               <Author>{bookInfo.authors[0]}</Author>
+               <Author>{bookInfo.authors && bookInfo.authors[0]}</Author>
             </BookInfo>
          </Inner>
       </Wrapper>
