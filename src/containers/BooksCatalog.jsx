@@ -10,7 +10,7 @@ function Books() {
    return (
       <Wrapper>
          <Container>
-            {state.fetchStatus ? (
+            {state.fetchStatus && !state.books ? (
                <h1>Загрузка..</h1>
             ) : (
                <>
