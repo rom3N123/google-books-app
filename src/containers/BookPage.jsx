@@ -9,9 +9,15 @@ function BookPage() {
    return (
       <Wrapper>
          <Inner>
-            <BookPageImage imageSrc={""} imageAlt={"hello"} />
+            <BookPageImage
+               className="book-page-image"
+               bookInfo={book.volumeInfo}
+            />
 
-            <BookPageInfo bookInfo={{}} />
+            <BookPageInfo
+               className="book-page-info"
+               bookInfo={book.volumeInfo}
+            />
          </Inner>
       </Wrapper>
    );
@@ -21,4 +27,15 @@ export default BookPage;
 
 const Wrapper = styled.div``;
 
-const Inner = styled.div``;
+const Inner = styled.div`
+   display: flex;
+   align-items: center;
+
+   .book-page-image {
+      flex: 1 0 40%;
+   }
+
+   .book-page-info {
+      flex: 0 1 60%;
+   }
+`;
