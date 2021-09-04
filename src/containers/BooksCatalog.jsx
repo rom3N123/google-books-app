@@ -1,13 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { BooksList } from ".";
 
 function Books() {
+   const areBooksFetching = useSelector((state) => state.fethcStatus);
+
    return (
       <Wrapper>
          <h4>Found 500 results</h4>
 
-         <BooksList />
+         {areBooksFetching ? <h1>Загрузка..</h1> : <BooksList />}
       </Wrapper>
    );
 }
