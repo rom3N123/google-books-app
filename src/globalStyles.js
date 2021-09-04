@@ -20,8 +20,14 @@ const styles = createGlobalStyle`
       }
    }
 
+   
+
    ul {
       padding: 0;
+   }
+
+   img {
+      max-width: 100%;
    }
 
    a {
@@ -33,6 +39,7 @@ const styles = createGlobalStyle`
    *::after,
    *::before {
       box-sizing:border-box;
+      margin: 0;
    }
 
    input,
