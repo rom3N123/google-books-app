@@ -4,7 +4,7 @@ interface IBook {
    thumbnails: IBookImages | null;
    categories: string[] | null;
    title: string;
-   author: string[] | null;
+   authors: string[] | null;
    description: string | null;
 }
 
