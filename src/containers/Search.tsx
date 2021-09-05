@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { Container, Input, SearchBtn, Select } from "../components";
 import useApi from "../hooks/useApi";
 
-function Search() {
+const Search: React.FC = () => {
    const { findBooks } = useApi();
 
    const subjects = [
@@ -32,7 +32,9 @@ function Search() {
       // findBooks(formState);
    };
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+   const handleChange = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+   ): void => {
       setFormState({ ...formState, [e.target.name]: e.target.value });
    };
 
@@ -70,7 +72,7 @@ function Search() {
          </Container>
       </SearchWrapper>
    );
-}
+};
 
 export default Search;
 
