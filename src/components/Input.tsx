@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Input as InputInterface } from "../interfaces";
 
-function Input({ ...props }) {
+const Input: React.FC<InputInterface> = ({ ...props }) => {
    return <InputField {...props} />;
-}
+};
 
 export default Input;
 
