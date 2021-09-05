@@ -24,13 +24,15 @@ function Search() {
       orderBy: filters[0],
    });
 
-   const handleSubmit = (e) => {
+   const handleSubmit = (e: React.SyntheticEvent): void => {
       e.preventDefault();
 
-      findBooks(formState);
+      console.log(formState);
+
+      // findBooks(formState);
    };
 
-   const handleChange = (e) => {
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       setFormState({ ...formState, [e.target.name]: e.target.value });
    };
 
@@ -42,7 +44,7 @@ function Search() {
                   <Input
                      placeholder="Search..."
                      name="searchValue"
-                     value={formState.searchText}
+                     value={formState.searchValue}
                      onChange={handleChange}
                   />
 
