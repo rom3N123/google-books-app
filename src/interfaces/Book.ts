@@ -1,7 +1,7 @@
 import { IBookImages } from ".";
 
 interface IBook {
-   thumbnails: IBookImages | undefined | null;
+   imageLinks: IBookImages | undefined | null;
    categories: string[] | null;
    title: string;
    authors: string[] | null;
