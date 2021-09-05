@@ -1,9 +1,15 @@
 import $api from "../http/axios";
-import { ISearchParams } from "../interfaces";
+import { IApiBook, ISearchParams } from "../interfaces";
 import { setBooks, addBooks } from "../redux/actions/books";
 import { setFetch, unsetFetch } from "../redux/actions/fetch";
 import { setQuery } from "../redux/actions/query";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
+
+interface IApiResponse {
+   kind: string;
+   totalItems: number;
+   items: IApiBook[];
+}
 
 const useApi = () => {
    const state = useAppSelector((state) => state);
@@ -22,9 +28,14 @@ const useApi = () => {
 
       dispatch(setFetch());
 
-      const response = await $api.get(`volumes?` + query);
+      const response = await $api.get<IApiResponse>(`volumes?` + query);
 
-      dispatch(setBooks(response.data));
+      dispatch(
+         setBooks({
+            totalItems: response.data.totalItems,
+            items: response.data.items,
+         })
+      );
 
       dispatch(unsetFetch());
    };
@@ -34,11 +45,16 @@ const useApi = () => {
 
       dispatch(setFetch());
 
-      const response = await $api.get(
+      const response = await $api.get<IApiResponse>(
          "volumes?" + state.query + "&startIndex=" + startIndex
       );
 
-      dispatch(addBooks(response.data.items));
+      dispatch(
+         addBooks({
+            totalItems: response.data.totalItems,
+            items: response.data.items,
+         })
+      );
 
       dispatch(unsetFetch());
    };
