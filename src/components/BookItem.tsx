@@ -5,7 +5,7 @@ import noThumbnail from "../assets/no-thumbnail.jpg";
 import { IBook } from "../interfaces";
 
 interface IBookWithClickAndClassName extends IBook {
-   onBookClick(book: IBook): void;
+   onBookClick(): void;
 }
 
 const BookItem: React.FC<IBookWithClickAndClassName> = ({
@@ -15,17 +15,12 @@ const BookItem: React.FC<IBookWithClickAndClassName> = ({
    thumbnails,
    title,
    onBookClick,
-
    ...props
 }) => {
    return (
       <Wrapper {...props}>
          <Inner>
-            <Thumbnail
-               onClick={onBookClick}
-               src={thumbnails && thumbnails.thumbnail}
-               alt={title}
-            />
+            <Thumbnail onClick={onBookClick} src={""} alt={title} />
 
             <BookInfo>
                <Category>{categories && categories.join(", ")}</Category>
