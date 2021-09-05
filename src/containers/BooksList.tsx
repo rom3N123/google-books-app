@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BookItem, LoadMoreBtn } from "../components";
-import { setBook } from "../redux/actions/book.ts";
+import { setBook } from "../redux/actions/book";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";
 
@@ -15,7 +15,7 @@ const BooksList: React.FC = ({ ...props }) => {
          authors: apiBook.volumeInfo.authors,
          categories: apiBook.volumeInfo.categories,
          description: apiBook.volumeInfo.description,
-         thumbnails: apiBook.volumeInfo.imageLinks,
+         imageLinks: apiBook.volumeInfo.imageLinks,
          title: apiBook.volumeInfo.title,
       };
 
@@ -30,7 +30,7 @@ const BooksList: React.FC = ({ ...props }) => {
                   <BookItem
                      onBookClick={() => handleBookClick(apiBook)}
                      authors={apiBook.volumeInfo.authors}
-                     thumbnails={apiBook.volumeInfo.imageLinks}
+                     imageLinks={apiBook.volumeInfo.imageLinks}
                      title={apiBook.volumeInfo.title}
                      description={apiBook.volumeInfo.description}
                      categories={apiBook.volumeInfo.categories}
