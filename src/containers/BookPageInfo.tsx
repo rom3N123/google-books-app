@@ -1,25 +1,33 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { IBook } from "../interfaces";
 
-function BookPageInfo({ bookInfo, ...props }) {
+const BookPageInfo: React.FC<IBook> = ({
+   authors,
+   categories,
+   title,
+   description,
+   thumbnails,
+   ...props
+}) => {
    return (
       <Wrapper {...props}>
          <Inner>
-            <Category>
-               {bookInfo.categories && bookInfo.categories.join("/")}
-            </Category>
+            <Categories>
+               {(categories && categories.join("/")) || "Без категории"}
+            </Categories>
 
-            <Title>{bookInfo.title}</Title>
+            <Title>{title}</Title>
 
-            <Authors>{bookInfo.authors && bookInfo.authors.join(", ")}</Authors>
+            <Authors>
+               {(authors && authors.join(", ")) || "Авторы неизвестны"}
+            </Authors>
 
-            <Description>
-               {bookInfo.description && bookInfo.description}
-            </Description>
+            <Description>{description || "Описание отсутствует"}</Description>
          </Inner>
       </Wrapper>
    );
-}
+};
 
 export default BookPageInfo;
 
@@ -35,7 +43,7 @@ const Inner = styled.div`
    }
 `;
 
-const Category = styled.p``;
+const Categories = styled.p``;
 
 const Title = styled.h3``;
 
