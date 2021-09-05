@@ -10,7 +10,7 @@ const BooksList: React.FC = ({ ...props }) => {
 
    const dispatch = useAppDispatch();
 
-   const handleBookClick = (apiBook: IApiBook) => {
+   const handleBookClick = (apiBook: IApiBook): void => {
       const bookItem: IBook = {
          authors: apiBook.volumeInfo.authors,
          categories: apiBook.volumeInfo.categories,
@@ -29,7 +29,6 @@ const BooksList: React.FC = ({ ...props }) => {
                state.books.items.map((apiBook: IApiBook) => (
                   <BookItem
                      onBookClick={() => handleBookClick(apiBook)}
-                     // className="book-item"
                      authors={apiBook.volumeInfo.authors}
                      thumbnails={apiBook.volumeInfo.imageLinks}
                      title={apiBook.volumeInfo.title}
