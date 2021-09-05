@@ -1,6 +1,7 @@
 interface IBookImages {
-   smallThumbnail: string;
+   smallThumbnail?: string;
    thumbnail: string;
+   thumbnailAlt?: string;
 }
 
 export default IBookImages;
