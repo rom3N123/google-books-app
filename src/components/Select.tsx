@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-function Select({ options, ...props }) {
+interface ISelect {
+   name: string;
+   options: string[];
+   onChange(e: React.ChangeEvent<HTMLSelectElement>): void;
+}
+
+const Select: React.FC<ISelect> = ({ options, name, ...props }) => {
    return (
-      <SelectField {...props}>
+      <SelectField name={name} {...props}>
          {options.map((option) => (
             <option key={option} value={option}>
                {option}
@@ -11,7 +17,7 @@ function Select({ options, ...props }) {
          ))}
       </SelectField>
    );
-}
+};
 
 export default Select;
 
