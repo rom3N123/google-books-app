@@ -1,5 +1,7 @@
+import { IBookImages } from ".";
+
 interface IBook {
-   thumbnail: string[] | null;
+   thumbnails: IBookImages | null;
    categories: string[] | null;
    title: string;
    author: string[] | null;
