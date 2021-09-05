@@ -1,6 +1,6 @@
 interface IBookImages {
-   smallThumbnail?: string;
-   thumbnail: string;
+   smallThumbnail?: string | undefined;
+   thumbnail: string | undefined;
    thumbnailAlt?: string;
 }
 
