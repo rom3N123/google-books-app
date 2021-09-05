@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BookPageImage, BookPageInfo, BookPageHeader } from ".";
-import { IApiBook } from "../interfaces";
+import { IBook } from "../interfaces";
 import { useAppSelector } from "../redux/storeHooks";
 
 function BookPage() {
-   const book = useAppSelector((state): IApiBook => state.book);
+   const book = useAppSelector((state): IBook => state.book);
 
    return (
       <Wrapper>
@@ -14,17 +14,19 @@ function BookPage() {
 
             <ItemsWrapper>
                <BookPageImage
-                  thumbnail={book.volumeInfo.imageLinks?.thumbnail}
-                  thumbnailAlt={book.volumeInfo.title}
+                  thumbnail={
+                     (book.imageLinks && book.imageLinks.thumbnail) || ""
+                  }
+                  thumbnailAlt={book.title}
                />
 
                <BookPageInfo
                   // className="book-page-info"
-                  authors={book.volumeInfo.authors}
-                  categories={book.volumeInfo.categories}
-                  title={book.volumeInfo.title}
-                  description={book.volumeInfo.description}
-                  thumbnails={book.volumeInfo.imageLinks}
+                  authors={book.authors}
+                  categories={book.categories}
+                  title={book.title}
+                  description={book.description}
+                  imageLinks={book.imageLinks}
                />
             </ItemsWrapper>
          </Inner>
