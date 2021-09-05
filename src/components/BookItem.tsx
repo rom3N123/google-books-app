@@ -2,35 +2,42 @@ import React from "react";
 import styled from "styled-components/macro";
 
 import noThumbnail from "../assets/no-thumbnail.jpg";
+import { IBook } from "../interfaces";
 
-function BookItem({ onBookClick = null, bookInfo, ...props }) {
+interface IBookWithClickAndClassName extends IBook {
+   onBookClick(book: IBook): void;
+}
+
+const BookItem: React.FC<IBookWithClickAndClassName> = ({
+   authors,
+   categories,
+   description,
+   thumbnails,
+   title,
+   onBookClick,
+
+   ...props
+}) => {
    return (
       <Wrapper {...props}>
          <Inner>
             <Thumbnail
                onClick={onBookClick}
-               src={
-                  (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) ||
-                  noThumbnail
-               }
-               alt={bookInfo.title}
+               src={thumbnails && thumbnails.thumbnail}
+               alt={title}
             />
 
             <BookInfo>
-               <Category>
-                  {bookInfo.categories && bookInfo.categories[0]}
-               </Category>
+               <Category>{categories && categories.join(", ")}</Category>
 
-               <Title onClick={onBookClick}>{bookInfo.title}</Title>
+               <Title onClick={onBookClick}>{title}</Title>
 
-               <Author>
-                  {bookInfo.authors && bookInfo.authors.join(", ")}
-               </Author>
+               <Author>{authors && authors.join(", ")}</Author>
             </BookInfo>
          </Inner>
       </Wrapper>
    );
-}
+};
 
 export default BookItem;
 

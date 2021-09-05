@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BookPageImage, BookPageInfo, BookPageHeader } from "../containers";
+import { BookPageImage, BookPageInfo, BookPageHeader } from ".";
 import { useAppSelector } from "../redux/storeHooks";
 
 function BookPage() {

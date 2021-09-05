@@ -2,20 +2,19 @@ import React from "react";
 import styled from "styled-components/macro";
 
 import noThumbnail from "../assets/no-thumbnail.jpg";
+import { IBookImages } from "../interfaces";
 
-function BookPageImage({ bookInfo, ...props }) {
+const BookPageImage: React.FC<IBookImages> = ({
+   thumbnail,
+   thumbnailAlt,
+   ...props
+}) => {
    return (
       <Wrapper {...props}>
-         <Image
-            src={
-               (bookInfo.imageLinks && bookInfo.imageLinks.thumbnail) ||
-               noThumbnail
-            }
-            alt={bookInfo.title}
-         />
+         <Image src={thumbnail} alt={thumbnailAlt} />
       </Wrapper>
    );
-}
+};
 
 export default BookPageImage;
 

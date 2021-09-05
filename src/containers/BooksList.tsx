@@ -1,28 +1,40 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useDispatch } from "react-redux";
 import { BookItem, LoadMoreBtn } from "../components";
 import { setBook } from "../redux/actions/book";
-import { useAppSelector } from "../redux/storeHooks";
+import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
+import { IApiBook, IBook } from "../interfaces";
 
-function BooksList({ ...props }) {
+const BooksList: React.FC = ({ ...props }) => {
    const state = useAppSelector((state) => state);
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
 
-   const handleBookClick = (book) => {
-      dispatch(setBook(book));
+   const handleBookClick = (apiBook: IApiBook) => {
+      const bookItem: IBook = {
+         authors: apiBook.volumeInfo.authors,
+         categories: apiBook.volumeInfo.categories,
+         description: apiBook.volumeInfo.description,
+         thumbnails: apiBook.volumeInfo.imageLinks,
+         title: apiBook.volumeInfo.title,
+      };
+
+      dispatch(setBook(bookItem));
    };
 
    return (
       <Wrapper {...props}>
          <Inner>
             {state.books ? (
-               state.books.items.map((book) => (
+               state.books.items.map((apiBook: IApiBook) => (
                   <BookItem
-                     onBookClick={() => handleBookClick(book)}
-                     className="book-item"
-                     bookInfo={book.volumeInfo}
+                     onBookClick={() => handleBookClick(apiBook)}
+                     // className="book-item"
+                     authors={apiBook.volumeInfo.authors}
+                     thumbnails={apiBook.volumeInfo.imageLinks}
+                     title={apiBook.volumeInfo.title}
+                     description={apiBook.volumeInfo.description}
+                     categories={apiBook.volumeInfo.categories}
                   />
                ))
             ) : (
@@ -38,7 +50,7 @@ function BooksList({ ...props }) {
             )) || <Loading>Загрузка..</Loading>)}
       </Wrapper>
    );
-}
+};
 
 export default BooksList;
 
