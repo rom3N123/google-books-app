@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BookItem, LoadMoreBtn } from "../components";
 import { setBook } from "../redux/actions/book";
+import { useAppSelector } from "../redux/storeHooks";
 
 function BooksList({ ...props }) {
-   const state = useSelector((state) => state);
+   const state = useAppSelector((state) => state);
 
    const dispatch = useDispatch();
 

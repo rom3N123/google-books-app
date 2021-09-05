@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import $api from "../http/axios";
 import { setBooks, addBooks } from "../redux/actions/books";
 import { setFetch, unsetFetch } from "../redux/actions/fetch";
 import { setQuery } from "../redux/actions/query";
+import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 
 const useApi = () => {
-   const state = useSelector((state) => state);
+   const state = useAppSelector((state) => state);
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
 
    const findBooks = async (params) => {
       const searchValue = getSystemReadableName(params.searchValue);

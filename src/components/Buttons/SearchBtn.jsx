@@ -1,7 +1,4 @@
-import React from "react";
-
 import IconButton from "./IconButton";
-
 import searchIconSvg from "../../assets/search-icon.svg";
 
 function SearchBtn() {

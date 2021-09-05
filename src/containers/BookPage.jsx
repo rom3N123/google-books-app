@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useSelector } from "react-redux";
 import { BookPageImage, BookPageInfo, BookPageHeader } from "../containers";
+import { useAppSelector } from "../redux/storeHooks";
 
 function BookPage() {
-   const book = useSelector((state) => state.book);
+   const book = useAppSelector((state) => state.book);
 
    return (
       <Wrapper>

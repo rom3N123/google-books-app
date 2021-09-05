@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import { BookPage, BooksCatalog, Header } from "./containers";
+import { useAppSelector } from "./redux/storeHooks";
 
-function App() {
-   const state = useSelector((state) => state);
+const App: React.FC = () => {
+   const state = useAppSelector((state) => state);
 
    return (
       <div className="App">
@@ -11,6 +11,6 @@ function App() {
          {(!state.book && <BooksCatalog />) || <BookPage />}
       </div>
    );
-}
+};
 
 export default App;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useSelector } from "react-redux";
 import { BooksList } from ".";
 import { Container } from "../components";
+import { useAppSelector } from "../redux/storeHooks";
 
 function Books() {
-   const state = useSelector((state) => state);
+   const state = useAppSelector((state) => state);
 
    return (
       <Wrapper>

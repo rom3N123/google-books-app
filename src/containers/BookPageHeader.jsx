@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useDispatch } from "react-redux";
 import { BackBtn } from "../components";
 import { unsetBook } from "../redux/actions/book";
+import { useAppDispatch } from "../redux/storeHooks";
 
 function BookPageHeader() {
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
 
    const handleGoBack = () => {
       dispatch(unsetBook());
