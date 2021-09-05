@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Container, Input, SearchBtn, Select } from "../components";
 import useApi from "../hooks/useApi";
+import { Container, Input, SearchBtn, Select } from "../components";
 import { ISearchParams } from "../interfaces";
 
 const Search: React.FC = () => {
