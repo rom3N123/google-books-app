@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Container, Input, SearchBtn, Select } from "../components";
 import useApi from "../hooks/useApi";
+import { ISearchParams } from "../interfaces";
 
 const Search: React.FC = () => {
    const { findBooks } = useApi();
@@ -18,7 +19,7 @@ const Search: React.FC = () => {
 
    const filters = ["relevance", "newest"];
 
-   const [formState, setFormState] = React.useState({
+   const [formState, setFormState] = React.useState<ISearchParams>({
       searchValue: "",
       subject: subjects[0],
       orderBy: filters[0],

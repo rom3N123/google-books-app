@@ -1,4 +1,5 @@
 import $api from "../http/axios";
+import { ISearchParams } from "../interfaces";
 import { setBooks, addBooks } from "../redux/actions/books";
 import { setFetch, unsetFetch } from "../redux/actions/fetch";
 import { setQuery } from "../redux/actions/query";
@@ -9,7 +10,7 @@ const useApi = () => {
 
    const dispatch = useAppDispatch();
 
-   const findBooks = async (params) => {
+   const findBooks = async (params: ISearchParams) => {
       const searchValue = getSystemReadableName(params.searchValue);
 
       const subject =
@@ -32,6 +33,7 @@ const useApi = () => {
       const startIndex = state.books.items.length;
 
       dispatch(setFetch());
+
       const response = await $api.get(
          "volumes?" + state.query + "&startIndex=" + startIndex
       );
@@ -41,7 +43,7 @@ const useApi = () => {
       dispatch(unsetFetch());
    };
 
-   const getSystemReadableName = (name) => {
+   const getSystemReadableName = (name: string): string => {
       return name
          .split(" ")
          .map((str) => str.toLowerCase())
