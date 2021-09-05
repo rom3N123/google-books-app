@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import noThumbnail from "../assets/no-thumbnail.jpg";
 import { IBookImages } from "../interfaces";
 
 const BookPageImage: React.FC<IBookImages> = ({

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import noThumbnail from "../assets/no-thumbnail.jpg";
 import { IBook } from "../interfaces";
 
 interface IBookWithClickAndClassName extends IBook {
@@ -17,10 +16,16 @@ const BookItem: React.FC<IBookWithClickAndClassName> = ({
    onBookClick,
    ...props
 }) => {
+   console.log(thumbnails);
+
    return (
       <Wrapper {...props}>
          <Inner>
-            <Thumbnail onClick={onBookClick} src={""} alt={title} />
+            <Thumbnail
+               onClick={onBookClick}
+               src={thumbnails?.thumbnail}
+               alt={title}
+            />
 
             <BookInfo>
                <Category>{categories && categories.join(", ")}</Category>
