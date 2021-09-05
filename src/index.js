@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App.tsx";
 import { Provider } from "react-redux";
 
-import GlobalStyles from "./globalStyles";
+import GlobalStyles from "./globalStyles.ts";
 import store from "./redux/store.ts";
 import "normalize.css";
 

@@ -28,9 +28,7 @@ const Search: React.FC = () => {
    const handleSubmit = (e: React.SyntheticEvent): void => {
       e.preventDefault();
 
-      console.log(formState);
-
-      // findBooks(formState);
+      findBooks(formState);
    };
 
    const handleChange = (
