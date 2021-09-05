@@ -11,19 +11,17 @@ const BookItem: React.FC<IBookWithClickAndClassName> = ({
    authors,
    categories,
    description,
-   thumbnails,
+   imageLinks,
    title,
    onBookClick,
    ...props
 }) => {
-   console.log(thumbnails);
-
    return (
       <Wrapper {...props}>
          <Inner>
             <Thumbnail
                onClick={onBookClick}
-               src={thumbnails?.thumbnail}
+               src={imageLinks?.thumbnail}
                alt={title}
             />
 
