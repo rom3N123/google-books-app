@@ -7,7 +7,7 @@ const BookPageInfo: React.FC<IBook> = ({
    categories,
    title,
    description,
-   thumbnails,
+   imageLinks,
    ...props
 }) => {
    return (
