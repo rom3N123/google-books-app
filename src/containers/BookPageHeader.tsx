@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BackBtn } from "../components";
-import { unsetBook } from "../redux/actions/book.ts";
+import { unsetBook } from "../redux/actions/book";
 import { useAppDispatch } from "../redux/storeHooks";
 
 function BookPageHeader() {
