@@ -14,16 +14,16 @@ const BookPageInfo: React.FC<IBook & React.HTMLAttributes<HTMLDivElement>> = ({
       <Wrapper {...props}>
          <Inner>
             <Categories>
-               {(categories && categories.join("/")) || "Без категории"}
+               {(categories && categories.join("/")) || "No categories"}
             </Categories>
 
             <Title>{title}</Title>
 
             <Authors>
-               {(authors && authors.join(", ")) || "Авторы неизвестны"}
+               {(authors && authors.join(", ")) || "Unknown authors"}
             </Authors>
 
-            <Description>{description || "Описание отсутствует"}</Description>
+            <Description>{description || "No description"}</Description>
          </Inner>
       </Wrapper>
    );

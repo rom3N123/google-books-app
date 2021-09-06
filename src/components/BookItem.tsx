@@ -28,7 +28,7 @@ const BookItem: React.FC<
             />
 
             <BookInfo>
-               <Category>{categories && categories.join(", ")}</Category>
+               <Category>{categories && categories[0]}</Category>
 
                <Title onClick={onBookClick}>{title}</Title>
 
