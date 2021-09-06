@@ -1,7 +1,7 @@
 import { IApiBook } from ".";
 
 interface IBooksStore {
-   totalItems: number;
+   totalItems?: number;
    items: IApiBook[];
 }
 
