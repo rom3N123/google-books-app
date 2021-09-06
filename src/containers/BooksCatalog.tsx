@@ -5,18 +5,20 @@ import { Container } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
 function Books() {
-   const state = useAppSelector((state) => state);
+   const books = useAppSelector((state) => state.books);
+
+   const fetchStatus = useAppSelector((state) => state.fetchStatus);
 
    return (
       <Wrapper>
          <Container>
-            {state.fetchStatus && !state.books ? (
+            {fetchStatus.setBooksStatus ? (
                <h1>Загрузка..</h1>
             ) : (
                <>
-                  {state.books && (
+                  {!!books.items.length && (
                      <SearchResult>
-                        Found {state.books.totalItems} results
+                        Found {books.totalItems} results
                      </SearchResult>
                   )}
 
