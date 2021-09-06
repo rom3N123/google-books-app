@@ -22,7 +22,7 @@ const BookItem: React.FC<
    return (
       <Wrapper onClick={onBookClick} {...props}>
          <Inner>
-            <Thumbnail src={imageLinks?.thumbnail} alt={title} />
+            <Thumbnail src={imageLinks?.thumbnail || ""} alt={title} />
 
             <BookInfo>
                <Category>{categories && categories[0]}</Category>

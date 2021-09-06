@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 
 interface IThumbnail {
-   src: string | undefined;
+   src: string;
    alt: string;
 }
 
