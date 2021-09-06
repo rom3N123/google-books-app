@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BookItem, LoadMoreBtn } from "../components";
-import { setBook } from "../redux/actions/book";
+import { SET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";
 
@@ -19,7 +19,7 @@ const BooksList: React.FC = ({ ...props }) => {
          title: apiBook.volumeInfo.title,
       };
 
-      dispatch(setBook(bookItem));
+      dispatch(SET_BOOK(bookItem));
    };
 
    return (

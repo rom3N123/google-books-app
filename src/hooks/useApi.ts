@@ -1,8 +1,8 @@
 import $api from "../http/axios";
 import { IApiBook, ISearchParams } from "../interfaces";
-import { setBooks, addBooks } from "../redux/actions/books";
-import { setFetch, unsetFetch } from "../redux/actions/fetch";
-import { setQuery } from "../redux/actions/query";
+import { SET_BOOKS, ADD_BOOKS } from "../redux/reducers/booksReducer";
+import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
+import { SET_QUERY } from "../redux/reducers/queryReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 
 interface IApiResponse {
@@ -24,39 +24,39 @@ const useApi = () => {
 
       const query = `q=${searchValue + subject}&orderBy=${params.orderBy}`;
 
-      dispatch(setQuery(query));
+      dispatch(SET_QUERY(query));
 
-      dispatch(setFetch());
+      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
       const response = await $api.get<IApiResponse>(`volumes?` + query);
 
       dispatch(
-         setBooks({
+         SET_BOOKS({
             totalItems: response.data.totalItems,
             items: response.data.items,
          })
       );
 
-      dispatch(unsetFetch());
+      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
    };
 
    const loadMoreBooks = async () => {
       const startIndex = state.books.items.length;
 
-      dispatch(setFetch());
+      dispatch(CHANGE_FETCH_STATUS("addBooksStatus"));
 
       const response = await $api.get<IApiResponse>(
          "volumes?" + state.query + "&startIndex=" + startIndex
       );
 
       dispatch(
-         addBooks({
+         ADD_BOOKS({
             totalItems: response.data.totalItems,
             items: response.data.items,
          })
       );
 
-      dispatch(unsetFetch());
+      dispatch(CHANGE_FETCH_STATUS("addBooksStatus"));
    };
 
    const getSystemReadableName = (name: string): string => {
