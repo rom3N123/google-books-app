@@ -25,9 +25,11 @@ const BooksList: React.FC = ({ ...props }) => {
    return (
       <Wrapper {...props}>
          <Inner>
-            {state.books ? (
+            {/* Если книги есть - проходимся по ним и рендерим */}
+            {!!state.books.items.length ? (
                state.books.items.map((apiBook: IApiBook) => (
                   <BookItem
+                     key={apiBook.volumeInfo.title}
                      onBookClick={() => handleBookClick(apiBook)}
                      authors={apiBook.volumeInfo.authors}
                      imageLinks={apiBook.volumeInfo.imageLinks}
@@ -41,12 +43,15 @@ const BooksList: React.FC = ({ ...props }) => {
             )}
          </Inner>
 
-         {state.books &&
-            ((!state.fetchStatus && (
+         {/* Если книги есть и книги загружаются - отображаем крутилку, нет - кнопку  */}
+         {!!state.books.items.length &&
+            (state.fetchStatus.addBooksStatus ? (
+               <Loading>Загрузка..</Loading>
+            ) : (
                <ButtonWrapper>
                   <LoadMoreBtn />
                </ButtonWrapper>
-            )) || <Loading>Загрузка..</Loading>)}
+            ))}
       </Wrapper>
    );
 };
