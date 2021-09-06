@@ -6,9 +6,7 @@ const querySlice = createSlice({
    name: "query",
    initialState,
    reducers: {
-      SET_QUERY: (state, action: PayloadAction<string>) => {
-         state = action.payload;
-      },
+      SET_QUERY: (state, action: PayloadAction<string>) => action.payload,
    },
 });
 
