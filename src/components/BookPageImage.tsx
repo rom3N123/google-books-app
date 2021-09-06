@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-
+import { Thumbnail } from ".";
 import { IBookImages } from "../interfaces";
 
 const BookPageImage: React.FC<
@@ -8,7 +8,10 @@ const BookPageImage: React.FC<
 > = ({ thumbnail, thumbnailAlt, ...props }) => {
    return (
       <Wrapper {...props}>
-         <Image src={thumbnail} alt={thumbnailAlt} />
+         <Thumbnail
+            src={thumbnail || ""}
+            alt={thumbnailAlt || "No alt message"}
+         />
       </Wrapper>
    );
 };
