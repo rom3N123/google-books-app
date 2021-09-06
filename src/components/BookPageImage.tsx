@@ -25,8 +25,3 @@ const Wrapper = styled.div`
    justify-content: center;
    align-items: center;
 `;
-
-const Image = styled.img`
-   height: 300px;
-   object-fit: contain;
-`;
