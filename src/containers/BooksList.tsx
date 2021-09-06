@@ -29,6 +29,7 @@ const BooksList: React.FC = ({ ...props }) => {
             {!!state.books.items.length ? (
                state.books.items.map((apiBook: IApiBook) => (
                   <BookItem
+                     className="book-item"
                      key={apiBook.volumeInfo.title}
                      onBookClick={() => handleBookClick(apiBook)}
                      authors={apiBook.volumeInfo.authors}
@@ -68,8 +69,16 @@ const Inner = styled.div`
 
    gap: 25px;
 
-   .book-item {
-      flex: 0 0 30%;
+   @media (min-width: 769px) {
+      .book-item {
+         flex: 1 0 30%;
+      }
+   }
+
+   @media (max-width: 768px) {
+      .book-item {
+         flex: 1 0 50%;
+      }
    }
 `;
 

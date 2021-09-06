@@ -3,11 +3,13 @@ import styled from "styled-components/macro";
 
 import { IBook } from "../interfaces";
 
-interface IBookWithClickAndClassName extends IBook {
+interface IBookWithClick extends IBook {
    onBookClick(): void;
 }
 
-const BookItem: React.FC<IBookWithClickAndClassName> = ({
+const BookItem: React.FC<
+   IBookWithClick & React.HTMLAttributes<HTMLDivElement>
+> = ({
    authors,
    categories,
    description,
