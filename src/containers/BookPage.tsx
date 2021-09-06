@@ -5,7 +5,7 @@ import { IBook } from "../interfaces";
 import { useAppSelector } from "../redux/storeHooks";
 
 function BookPage() {
-   const book = useAppSelector((state): IBook => state.book);
+   const book = useAppSelector((state) => state.book);
 
    return (
       <Wrapper>
