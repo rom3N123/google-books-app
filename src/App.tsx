@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <div className="App">
          <Header />
 
-         {(!state.book && <BooksCatalog />) || <BookPage />}
+         {(!state.book.item && <BooksCatalog />) || <BookPage />}
       </div>
    );
 };

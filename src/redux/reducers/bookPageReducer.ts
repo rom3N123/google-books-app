@@ -1,17 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook } from "../../interfaces";
 
-export type BookType = IBook | null;
+export interface IBookState {
+   item?: IBook | null;
+}
 
-const initialState: IBook | null = null;
+const initialState: IBookState = {
+   item: null,
+};
 
 const bookSlice = createSlice({
    name: "book",
    initialState,
    reducers: {
-      SET_BOOK: (state, action: PayloadAction<IBook>) => action.payload,
+      SET_BOOK: (state, action: PayloadAction<IBook>) => ({
+         ...state,
+         item: action.payload,
+      }),
 
-      UNSET_BOOK: (state) => null,
+      UNSET_BOOK: (state) => ({
+         item: null,
+      }),
    },
 });
 
