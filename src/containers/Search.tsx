@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import useApi from "../hooks/useApi";
+import { useApi } from "../hooks";
 import { Container, Input, SearchBtn, Select } from "../components";
 import { ISearchParams } from "../interfaces";
 

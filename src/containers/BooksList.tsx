@@ -44,7 +44,7 @@ const BooksList: React.FC = ({ ...props }) => {
             )}
          </Inner>
 
-         {/* Если книги есть и книги загружаются - отображаем крутилку, нет - кнопку  */}
+         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку  */}
          {!!state.books.items.length &&
             (state.fetchStatus.addBooksStatus ? (
                <Loading>Загрузка..</Loading>

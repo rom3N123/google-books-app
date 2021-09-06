@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import useApi from "../../hooks/useApi";
+import { useApi } from "../../hooks";
 
 function LoadMoreBtn() {
    const { loadMoreBooks } = useApi();
