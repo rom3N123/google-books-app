@@ -3,19 +3,15 @@ import { IBook } from "../../interfaces";
 
 export type BookType = IBook | null;
 
-const initialState: BookType = null;
+const initialState: IBook | null = null;
 
 const bookSlice = createSlice({
    name: "book",
    initialState,
    reducers: {
-      SET_BOOK: (state: BookType, action: PayloadAction<IBook>) => {
-         state = action.payload;
-      },
+      SET_BOOK: (state, action: PayloadAction<IBook>) => action.payload,
 
-      UNSET_BOOK: (state: BookType) => {
-         state = null;
-      },
+      UNSET_BOOK: (state) => null,
    },
 });
 
