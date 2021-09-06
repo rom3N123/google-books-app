@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook } from "../../interfaces";
 
-type BookType = IBook | null;
+export type BookType = IBook | null;
 
 const initialState: BookType = null;
 
