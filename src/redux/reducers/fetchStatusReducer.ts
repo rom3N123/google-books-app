@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFetchStatus {
-   [key: string]: boolean;
+   [setBooksStatus: string]: boolean;
+}
+
+export interface IFetchStatusState extends IFetchStatus {
+   setBooksStatus: false;
+   addBooksStatus: false;
 }
 
 type FetchStatusPayload = string;
 
-const initialState: IFetchStatus = {
+const initialState: IFetchStatusState = {
    setBooksStatus: false,
    addBooksStatus: false,
 };
