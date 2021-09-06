@@ -6,3 +6,4 @@ export { default as BookItem } from "./BookItem";
 export { default as LoadMoreBtn } from "./Buttons/LoadMoreBtn";
 export { default as BackBtn } from "./Buttons/BackBtn";
 export { default as IconButton } from "./Buttons/IconButton";
+export { default as Thumbnail } from "./Thumbnail";

@@ -16,7 +16,7 @@ const BookPageHeader: React.FC = () => {
          <Inner>
             <BackBtn onClick={handleGoBack} />
 
-            <Label>Назад</Label>
+            <Label>Back to List</Label>
          </Inner>
       </Wrapper>
    );
