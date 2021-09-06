@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import Search from "./Search";
 import { Container } from "../components";
 
-function Header() {
+const Header: React.FC = () => {
    return (
       <Wrapper>
          <Container>
@@ -15,7 +15,7 @@ function Header() {
          </Container>
       </Wrapper>
    );
-}
+};
 
 export default Header;
 

@@ -4,7 +4,7 @@ import { BooksList } from ".";
 import { Container } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
-function Books() {
+const Books: React.FC = () => {
    const books = useAppSelector((state) => state.books);
 
    const fetchStatus = useAppSelector((state) => state.fetchStatus);
@@ -28,7 +28,7 @@ function Books() {
          </Container>
       </Wrapper>
    );
-}
+};
 
 export default Books;
 

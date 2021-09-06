@@ -4,7 +4,7 @@ import { BookPageImage, BookPageInfo, BookPageHeader } from ".";
 import { BookType } from "../redux/reducers/bookPageReducer";
 import { useAppSelector } from "../redux/storeHooks";
 
-function BookPage() {
+const BookPage: React.FC = () => {
    const book = useAppSelector((state): BookType => state.book);
 
    return (
@@ -32,7 +32,7 @@ function BookPage() {
          </Inner>
       </Wrapper>
    );
-}
+};
 
 export default BookPage;
 

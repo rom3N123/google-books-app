@@ -4,7 +4,7 @@ import { BackBtn } from "../components";
 import { UNSET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch } from "../redux/storeHooks";
 
-function BookPageHeader() {
+const BookPageHeader: React.FC = () => {
    const dispatch = useAppDispatch();
 
    const handleGoBack = () => {
@@ -20,7 +20,7 @@ function BookPageHeader() {
          </Inner>
       </Wrapper>
    );
-}
+};
 
 export default BookPageHeader;
 
