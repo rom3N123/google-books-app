@@ -4,3 +4,4 @@ export type { default as IApiBook } from "./ApiBook";
 export type { default as Input } from "./Input";
 export type { default as ISearchParams } from "./SearchParams";
 export type { default as IBooksStore } from "./BooksStore";
+export type { default as ISelect } from "./Select";

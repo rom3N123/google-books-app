@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-interface ISelect {
-   name: string;
-   options: string[];
-   onChange(e: React.ChangeEvent<HTMLSelectElement>): void;
-}
+import { ISelect } from "../interfaces";
 
 const Select: React.FC<ISelect> = ({ options, name, ...props }) => {
    return (
