@@ -29,6 +29,10 @@ const Search: React.FC = () => {
    const handleSubmit = (e: React.SyntheticEvent): void => {
       e.preventDefault();
 
+      if (!formState.searchValue) {
+         return;
+      }
+
       findBooks(formState);
    };
 

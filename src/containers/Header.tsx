@@ -3,6 +3,8 @@ import styled from "styled-components/macro";
 import Search from "./Search";
 import { Container } from "../components";
 
+import headerBgJPG from "../assets/header-wallpaper.jpg";
+
 const Header: React.FC = () => {
    return (
       <Wrapper>
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
 export default Header;
 
 const Wrapper = styled.header`
-   background: url("/header-wallpaper.jpg") center/cover no-repeat;
+   background: url(${headerBgJPG}) center/cover no-repeat;
 `;
 
 const Inner = styled.div`
