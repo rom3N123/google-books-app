@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components/macro";
 
 interface IThumbnail {
-   src: string;
+   src: string | undefined;
    alt: string;
 }
 
-const Thumbnail: React.FC<IThumbnail & { height: string }> = ({
+const Thumbnail: React.FC<IThumbnail & { height?: string }> = ({
    src,
    alt,
    height,

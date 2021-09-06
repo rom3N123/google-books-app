@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Thumbnail } from ".";
 
 import { IBook } from "../interfaces";
 
@@ -62,14 +63,6 @@ const BookInfo = styled.div`
    display: flex;
    flex-direction: column;
    margin-top: 25px;
-`;
-
-const Thumbnail = styled.img`
-   height: 280px;
-   object-fit: contain;
-   margin: 0 auto;
-   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
-      rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `;
 
 const Title = styled.h4`
