@@ -15,6 +15,7 @@ const BookPage: React.FC = () => {
 
             <ItemsWrapper>
                <BookPageImage
+                  className="book-page-thumbnail"
                   thumbnail={
                      (book.item!.imageLinks &&
                         book.item!.imageLinks.thumbnail) ||
@@ -24,7 +25,7 @@ const BookPage: React.FC = () => {
                />
 
                <BookPageInfo
-                  // className="book-page-info"
+                  className="book-page-info"
                   authors={book.item!.authors}
                   categories={book.item!.categories}
                   title={book.item!.title}
@@ -44,17 +45,26 @@ const Wrapper = styled.div``;
 const Inner = styled.div`
    display: flex;
    flex-direction: column;
-
-   .book-page-image {
-      flex: 1 0 40%;
-   }
-
-   .book-page-info {
-      flex: 0 1 60%;
-   }
 `;
 
 const ItemsWrapper = styled.div`
    display: flex;
    align-items: center;
+
+   @media (min-width: 768px) {
+      .book-page-thumbnail {
+         flex: 1 0 40%;
+      }
+
+      .book-page-info {
+         flex: 0 1 60%;
+      }
+   }
+
+   @media (max-width: 768px) {
+      flex-direction: column;
+      .book-page-thumbnail {
+         width: 100%;
+      }
+   }
 `;

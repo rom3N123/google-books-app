@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { IBook } from "../interfaces";
 
-const BookPageInfo: React.FC<IBook> = ({
+const BookPageInfo: React.FC<IBook & React.HTMLAttributes<HTMLDivElement>> = ({
    authors,
    categories,
    title,
