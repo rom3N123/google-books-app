@@ -19,18 +19,14 @@ const BookItem: React.FC<
    ...props
 }) => {
    return (
-      <Wrapper {...props}>
+      <Wrapper onClick={onBookClick} {...props}>
          <Inner>
-            <Thumbnail
-               onClick={onBookClick}
-               src={imageLinks?.thumbnail}
-               alt={title}
-            />
+            <Thumbnail src={imageLinks?.thumbnail} alt={title} />
 
             <BookInfo>
                <Category>{categories && categories[0]}</Category>
 
-               <Title onClick={onBookClick}>{title}</Title>
+               <Title>{title}</Title>
 
                <Author>{authors && authors.join(", ")}</Author>
             </BookInfo>
@@ -42,7 +38,18 @@ const BookItem: React.FC<
 export default BookItem;
 
 const Wrapper = styled.div`
-   background-color: #ccc;
+   background-color: #fff;
+
+   transition: all 0.3s ease;
+   border-radius: 6px;
+   border: 1px solid #ccc;
+   padding: 10px;
+
+   cursor: pointer;
+
+   &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   }
 `;
 
 const Inner = styled.div`
@@ -54,18 +61,18 @@ const Inner = styled.div`
 const BookInfo = styled.div`
    display: flex;
    flex-direction: column;
-   margin-top: 10px;
+   margin-top: 25px;
 `;
 
 const Thumbnail = styled.img`
    height: 280px;
    object-fit: contain;
    margin: 0 auto;
-   cursor: pointer;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `;
 
 const Title = styled.h4`
-   cursor: pointer;
    margin: 5px 0;
    font-size: 1.25rem;
    font-weight: 600;
@@ -75,7 +82,6 @@ const Category = styled.p`
    text-decoration: underline;
    font-size: 1.12rem;
    line-height: 1.5;
-   cursor: pointer;
 `;
 
 const Author = styled.p`

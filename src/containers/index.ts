@@ -6,3 +6,4 @@ export { default as BookPage } from "./BookPage";
 export { default as BookPageImage } from "../components/BookPageImage";
 export { default as BookPageInfo } from "./BookPageInfo";
 export { default as BookPageHeader } from "./BookPageHeader";
+export { default as SelectItem } from "./SelectItem";

@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { useApi } from "../hooks";
 import { Container, Input, SearchBtn, Select } from "../components";
 import { ISearchParams } from "../interfaces";
+import { SelectItem } from ".";
 
 const Search: React.FC = () => {
    const { findBooks } = useApi();
@@ -49,22 +50,26 @@ const Search: React.FC = () => {
                      onChange={handleChange}
                   />
 
-                  <SearchButtonWrapper>
+                  <ButtonWrapper>
                      <SearchBtn type="submit" />
-                  </SearchButtonWrapper>
+                  </ButtonWrapper>
                </SearchInnerWrapper>
 
                <Filters>
-                  <Select
+                  <SelectItem
+                     id="categories"
+                     labelTitle="Categories"
                      onChange={handleChange}
                      options={subjects}
-                     name="subject"
+                     name="subjects"
                   />
 
-                  <Select
-                     name="orderBy"
-                     options={filters}
+                  <SelectItem
+                     id="order"
+                     labelTitle="Order by"
                      onChange={handleChange}
+                     options={filters}
+                     name="orderBy"
                   />
                </Filters>
             </Form>
@@ -88,9 +93,8 @@ const Form = styled.form`
 
 const Filters = styled.div`
    display: flex;
-   justify-content: center;
+   justify-content: space-around;
    align-items: center;
-   gap: 20px;
    margin: 25px 0 10px;
 `;
 
@@ -98,7 +102,7 @@ const SearchInnerWrapper = styled.div`
    position: relative;
 `;
 
-const SearchButtonWrapper = styled.div`
+const ButtonWrapper = styled.div`
    position: absolute;
    top: 50%;
    transform: translateY(-50%);
