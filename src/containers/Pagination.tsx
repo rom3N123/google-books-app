@@ -7,7 +7,7 @@ import { useApi } from "../hooks";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Pagination: React.FC = () => {
-   const { loadMoreBooks } = useApi();
+   const { paginateBooks } = useApi();
 
    const foundResults = useAppSelector((state) => state.books.totalItems);
 
@@ -51,12 +51,12 @@ const Pagination: React.FC = () => {
    const handleArrowNextClick = () => calculateItems("next");
    const handleArrowPrevClick = () => calculateItems("prev");
    const handleLoadBooks = (startIndex: number) => {
-      loadMoreBooks(startIndex);
+      paginateBooks(startIndex);
    };
 
    React.useEffect(() => {
       if (foundResults) {
-         let calculatedItems = Math.round(foundResults / 30);
+         let calculatedItems = Math.floor(foundResults / 30);
 
          // @ts-ignore
          setPaginationItems([...Array(calculatedItems).keys()]);
