@@ -52,7 +52,7 @@ const BooksList: React.FC = ({ ...props }) => {
 export default BooksList;
 
 const Wrapper = styled.div`
-   padding: 20px 0;
+   padding: 0 20px;
 `;
 
 const Inner = styled.div`
@@ -64,7 +64,7 @@ const Inner = styled.div`
 
    @media (min-width: 769px) {
       .book-item {
-         flex-basis: calc(100% / 6 - 30px);
+         flex-basis: calc(100% / 6 - 25px);
       }
    }
 

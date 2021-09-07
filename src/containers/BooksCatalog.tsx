@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Fade } from "@material-ui/core";
+import { Fade, Grow } from "@material-ui/core";
 import { BooksList, Pagination } from ".";
 import { Loading } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
@@ -32,9 +32,11 @@ const Books: React.FC = () => {
             )}
 
             {!!state.books.items.length && (
-               <PaginationWrapper>
-                  <Pagination />
-               </PaginationWrapper>
+               <Grow timeout={0} in={!state.fetchStatus.setBooksStatus}>
+                  <PaginationWrapper>
+                     <Pagination />
+                  </PaginationWrapper>
+               </Grow>
             )}
          </Inner>
       </Wrapper>
@@ -46,7 +48,6 @@ export default Books;
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
-   padding-top: 20px;
 `;
 
 const Inner = styled.div`
@@ -55,6 +56,7 @@ const Inner = styled.div`
 
 const SearchResult = styled.h3`
    text-align: center;
+   margin-bottom: 20px;
 `;
 
 const PaginationWrapper = styled.div`
@@ -68,4 +70,5 @@ const LoadingWrapper = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+   margin-top: 50px;
 `;
