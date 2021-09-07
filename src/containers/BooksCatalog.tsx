@@ -5,7 +5,7 @@ import { Container } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Books: React.FC = () => {
-   const books = useAppSelector((state) => state.books);
+   const state = useAppSelector((state) => state);
 
    const fetchStatus = useAppSelector((state) => state.fetchStatus);
 
@@ -16,9 +16,9 @@ const Books: React.FC = () => {
                <h1>Загрузка..</h1>
             ) : (
                <>
-                  {!!books.items.length && (
+                  {!!state.books.items.length && (
                      <SearchResult>
-                        Found {books.totalItems} results
+                        Found {state.books.totalItems} results
                      </SearchResult>
                   )}
 
