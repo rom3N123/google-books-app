@@ -1,6 +1,6 @@
 import $api from "../http/axios";
 import { IApiBook, ISearchParams } from "../interfaces";
-import { SET_BOOKS, ADD_BOOKS } from "../redux/reducers/booksReducer";
+import { SET_BOOKS } from "../redux/reducers/booksReducer";
 import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
 import { SET_QUERY } from "../redux/reducers/queryReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
@@ -17,12 +17,21 @@ const useApi = () => {
    const dispatch = useAppDispatch();
 
    const findBooks = async (params: ISearchParams) => {
-      const searchValue = getSystemReadableName(params.searchValue);
+      let searchValue: string = getSystemReadableName(params.searchValue);
 
-      const subject =
-         params.subject === "all" ? "" : `+subject:${params.subject}`;
+      let query: string = `q=${searchValue}`;
 
-      const query = `q=${searchValue + subject}&orderBy=${params.orderBy}`;
+      if (params.subject !== "all") {
+         query += "+subject:" + params.subject;
+      }
+
+      if (params.startIndex) {
+         query += "&startIndex=" + params.startIndex;
+      }
+
+      if (params.orderBy) {
+         query += "&orderBy=" + params.orderBy;
+      }
 
       dispatch(SET_QUERY(query));
 
@@ -40,21 +49,20 @@ const useApi = () => {
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
    };
 
-   const loadMoreBooks = async (startIndex: number) => {
-      dispatch(CHANGE_FETCH_STATUS("addBooksStatus"));
+   const paginateBooks = async (startIndex: number) => {
+      const query: string = state.query + "&startIndex=" + startIndex;
 
-      const response = await $api.get<IApiResponse>(
-         "volumes?" + state.query + "&startIndex=" + startIndex
-      );
+      const response = await $api.get("volumes?" + query);
+
+      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
       dispatch(
-         ADD_BOOKS({
-            totalItems: response.data.totalItems,
+         SET_BOOKS({
             items: response.data.items,
          })
       );
 
-      dispatch(CHANGE_FETCH_STATUS("addBooksStatus"));
+      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
    };
 
    const getSystemReadableName = (name: string): string => {
@@ -64,7 +72,7 @@ const useApi = () => {
          .join("+");
    };
 
-   return { loadMoreBooks, findBooks };
+   return { paginateBooks, findBooks };
 };
 
 export default useApi;
