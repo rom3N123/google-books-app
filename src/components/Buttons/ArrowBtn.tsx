@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import SmallButton from "../SmallButton";
+import { IconButton } from "..";
 
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -11,11 +11,11 @@ interface IArrowBtnProps {
 function ArrowBtn({
    direction = "left",
    ...props
-}: IArrowBtnProps & React.HTMLAttributes<HTMLDivElement>): ReactElement {
+}: IArrowBtnProps & React.HTMLAttributes<HTMLButtonElement>): ReactElement {
    return (
-      <SmallButton {...props}>
+      <IconButton {...props}>
          {direction === "left" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-      </SmallButton>
+      </IconButton>
    );
 }
 
