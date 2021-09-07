@@ -13,9 +13,10 @@ const Books: React.FC = () => {
    return (
       <Wrapper>
          <Container>
-            <Loading />
             {fetchStatus.setBooksStatus ? (
-               <h1>Загрузка..</h1>
+               <LoadingWrapper>
+                  <Loading />
+               </LoadingWrapper>
             ) : (
                <>
                   {!!state.books.items.length && (
@@ -54,6 +55,12 @@ const SearchResult = styled.h3`
 
 const PaginationWrapper = styled.div`
    margin: 20px 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`;
+
+const LoadingWrapper = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;

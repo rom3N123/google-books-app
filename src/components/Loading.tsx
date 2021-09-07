@@ -20,7 +20,7 @@ const LoadingAnimation = keyframes`
    }
 
    100% {
-      transform: scale(1.4);
+      transform: scale(1.3);
       opacity: 0;
    }
 `;
@@ -31,6 +31,6 @@ const Animation = styled.div`
    border-radius: 50%;
    background-color: rgba(0, 0, 0, 0.3);
 
-   animation: ${LoadingAnimation} 1.1s cubic-bezier(0, 0, 1, 1.54);
+   animation: ${LoadingAnimation} 1s cubic-bezier(0, 0, 1, 1.54);
    animation-iteration-count: infinite;
 `;
