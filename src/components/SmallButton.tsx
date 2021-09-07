@@ -13,7 +13,7 @@ interface ISmallButton {
 
 function SmallButton({
    children,
-   backgroundColor = "#fff",
+   backgroundColor = "transparent",
    width = "24px",
    height = "24px",
    childrenColor = "#262626",
@@ -56,10 +56,8 @@ const Button = styled(IconButton)`
             color: #262626;
             background-color: ${backgroundColor};
             font-size: 14px;
-            font-weight: 700;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-               rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
+            font-weight: 600;
+            transition: all .2s ease;
                & > *:first-child {
                   color: ${childrenColor};
                }

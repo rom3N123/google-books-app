@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BooksList } from ".";
+import { BooksList, Pagination } from ".";
 import { Container } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
@@ -25,6 +25,12 @@ const Books: React.FC = () => {
                   <BooksList />
                </>
             )}
+
+            {!!state.books.items.length && (
+               <PaginationWrapper>
+                  <Pagination />
+               </PaginationWrapper>
+            )}
          </Container>
       </Wrapper>
    );
@@ -40,4 +46,11 @@ const Wrapper = styled.div`
 
 const SearchResult = styled.h3`
    text-align: center;
+`;
+
+const PaginationWrapper = styled.div`
+   margin: 20px 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 `;

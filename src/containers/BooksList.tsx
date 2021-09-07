@@ -4,7 +4,6 @@ import { BookItem } from "../components";
 import { SET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";
-import { Pagination } from ".";
 
 const BooksList: React.FC = ({ ...props }) => {
    const state = useAppSelector((state) => state);
@@ -26,33 +25,26 @@ const BooksList: React.FC = ({ ...props }) => {
    return (
       <Wrapper {...props}>
          <Inner>
-            {/* Если книги есть - проходимся по ним и рендерим */}
-            {!!state.books.items.length ? (
-               state.books.items.map((apiBook: IApiBook) => (
-                  <BookItem
-                     className="book-item"
-                     key={apiBook.volumeInfo.title}
-                     onBookClick={() => handleBookClick(apiBook)}
-                     authors={apiBook.volumeInfo.authors}
-                     imageLinks={apiBook.volumeInfo.imageLinks}
-                     title={apiBook.volumeInfo.title}
-                     description={apiBook.volumeInfo.description}
-                     categories={apiBook.volumeInfo.categories}
-                  />
-               ))
-            ) : (
-               <p>Здесь будут отображаться книги</p>
-            )}
+            <>
+               {/* Если книги есть - проходимся по ним и рендерим */}
+               {!!state.books.items.length ? (
+                  state.books.items.map((apiBook: IApiBook) => (
+                     <BookItem
+                        className="book-item"
+                        key={apiBook.volumeInfo.title}
+                        onBookClick={() => handleBookClick(apiBook)}
+                        authors={apiBook.volumeInfo.authors}
+                        imageLinks={apiBook.volumeInfo.imageLinks}
+                        title={apiBook.volumeInfo.title}
+                        description={apiBook.volumeInfo.description}
+                        categories={apiBook.volumeInfo.categories}
+                     />
+                  ))
+               ) : (
+                  <p>Здесь будут отображаться книги</p>
+               )}
+            </>
          </Inner>
-         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку  */}
-         {!!state.books.items.length &&
-            (state.fetchStatus.addBooksStatus ? (
-               <Loading>Загрузка..</Loading>
-            ) : (
-               <ButtonWrapper>
-                  <Pagination />
-               </ButtonWrapper>
-            ))}
       </Wrapper>
    );
 };
@@ -81,18 +73,4 @@ const Inner = styled.div`
          flex: 1 0 50%;
       }
    }
-`;
-
-const ButtonWrapper = styled.div`
-   margin: 20px 0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-`;
-
-const Loading = styled.p`
-   text-align: center;
-   line-height: 1.5;
-   font-size: 1.3rem;
-   margin: 10px 0;
 `;

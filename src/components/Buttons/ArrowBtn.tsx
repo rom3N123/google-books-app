@@ -13,12 +13,7 @@ function ArrowBtn({
    ...props
 }: IArrowBtnProps & React.HTMLAttributes<HTMLDivElement>): ReactElement {
    return (
-      <SmallButton
-         {...props}
-         childrenColor="#fff"
-         backgroundColor="#262626"
-         hoverBackgroundColor="#555454"
-      >
+      <SmallButton {...props}>
          {direction === "left" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       </SmallButton>
    );

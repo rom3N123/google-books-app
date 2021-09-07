@@ -10,11 +10,11 @@ const Pagination: React.FC = () => {
    const { paginateBooks } = useApi();
 
    const foundResults = useAppSelector((state) => state.books.totalItems);
-
    const [paginationItems, setPaginationItems] = React.useState<number[]>([]);
-
    const [maxVisibleIndex, setMaxVisibleIndex] = React.useState(10);
    const [minVisibleIndex, setMinVisibleIndex] = React.useState(0);
+
+   const [activePagination, setActivePagination] = React.useState(1);
 
    const calculateItems = (operation: "next" | "prev"): void => {
       if (operation === "next") {
@@ -49,9 +49,21 @@ const Pagination: React.FC = () => {
    };
 
    const handleArrowNextClick = () => calculateItems("next");
+
    const handleArrowPrevClick = () => calculateItems("prev");
-   const handleLoadBooks = (startIndex: number) => {
+
+   const loadBooks = (startIndex: number) => {
       paginateBooks(startIndex);
+   };
+
+   const handleButtonClick = (value: number): void => {
+      if (value + 1 === activePagination) {
+         return;
+      }
+
+      const startIndex = value * 30;
+      loadBooks(startIndex);
+      setActivePagination(value + 1);
    };
 
    React.useEffect(() => {
@@ -71,12 +83,15 @@ const Pagination: React.FC = () => {
             <PaginationItemsWrapper>
                {paginationItems
                   .slice(minVisibleIndex, maxVisibleIndex)
-                  .map((item) => (
-                     <Grow in={true} key={item}>
+                  .map((value) => (
+                     <Grow in={true} key={value}>
                         <SmallButton
-                           onClick={() => handleLoadBooks((item + 1) * 30)}
+                           backgroundColor={`${
+                              value + 1 === activePagination ? "#ccc" : ""
+                           }`}
+                           onClick={() => handleButtonClick(value)}
                         >
-                           {item + 1}
+                           {value + 1}
                         </SmallButton>
                      </Grow>
                   ))}
