@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Fade } from "@material-ui/core";
 import { BooksList, Pagination } from ".";
-import { Container } from "../components";
+import { Container, Loading } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Books: React.FC = () => {
@@ -13,6 +13,7 @@ const Books: React.FC = () => {
    return (
       <Wrapper>
          <Container>
+            <Loading />
             {fetchStatus.setBooksStatus ? (
                <h1>Загрузка..</h1>
             ) : (
