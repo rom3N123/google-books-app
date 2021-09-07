@@ -40,9 +40,7 @@ const useApi = () => {
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
    };
 
-   const loadMoreBooks = async () => {
-      const startIndex = state.books.items.length;
-
+   const loadMoreBooks = async (startIndex: number) => {
       dispatch(CHANGE_FETCH_STATUS("addBooksStatus"));
 
       const response = await $api.get<IApiResponse>(
