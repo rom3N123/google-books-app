@@ -14,6 +14,7 @@ function ArrowBtn({
 }: IArrowBtnProps & React.HTMLAttributes<HTMLDivElement>): ReactElement {
    return (
       <SmallButton
+         {...props}
          childrenColor="#fff"
          backgroundColor="#262626"
          hoverBackgroundColor="#555454"

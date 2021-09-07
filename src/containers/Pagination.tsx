@@ -1,3 +1,4 @@
+import { Grow } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components/macro";
 import ArrowBtn from "../components/Buttons/ArrowBtn";
@@ -7,37 +8,74 @@ import { useAppSelector } from "../redux/storeHooks";
 const Pagination: React.FC = () => {
    const foundResults = useAppSelector((state) => state.books.totalItems);
 
-   const [paginationItems, setPaginationItems] = React.useState<null[]>([]);
+   const [paginationItems, setPaginationItems] = React.useState<number[]>([]);
 
    const [maxVisibleIndex, setMaxVisibleIndex] = React.useState(10);
-   const [minVisibleIndex, setMinVisibleIndex] = React.useState(
-      maxVisibleIndex - 10
-   );
+   const [minVisibleIndex, setMinVisibleIndex] = React.useState(0);
+
+   const calculateItems = (operation: "next" | "prev"): void => {
+      if (operation === "next") {
+         let diffArray: number[] = paginationItems.slice(maxVisibleIndex);
+
+         if (!diffArray.length) {
+            return;
+         }
+
+         if (diffArray.length > 10) {
+            setMaxVisibleIndex(maxVisibleIndex + 10);
+            setMinVisibleIndex(minVisibleIndex + 10);
+         } else {
+            setMaxVisibleIndex(maxVisibleIndex + diffArray.length);
+            setMinVisibleIndex(diffArray.length);
+         }
+      } else {
+         let diffArray: number[] = paginationItems.slice(0, minVisibleIndex);
+
+         if (!diffArray.length) {
+            return;
+         }
+
+         if (diffArray.length > 10) {
+            setMaxVisibleIndex(minVisibleIndex + 10);
+            setMinVisibleIndex(minVisibleIndex - 10);
+         } else {
+            setMaxVisibleIndex(maxVisibleIndex - diffArray.length);
+            setMinVisibleIndex(minVisibleIndex - diffArray.length);
+         }
+      }
+   };
+
+   console.log(maxVisibleIndex);
+   console.log(minVisibleIndex);
+
+   const handleArrowNextClick = () => calculateItems("next");
+   const handleArrowPrevClick = () => calculateItems("prev");
 
    React.useEffect(() => {
       if (foundResults) {
          let calculatedItems = Math.round(foundResults / 30);
 
-         let arr: null[] = Array(calculatedItems).fill(null);
-
-         setPaginationItems(arr);
+         // @ts-ignore
+         setPaginationItems([...Array(calculatedItems).keys()]);
       }
    }, [foundResults]);
 
    return (
       <Wrapper>
          <Inner>
-            <ArrowBtn direction="left" />
+            <ArrowBtn onClick={handleArrowPrevClick} direction="left" />
 
             <PaginationItemsWrapper>
                {paginationItems
                   .slice(minVisibleIndex, maxVisibleIndex)
-                  .map((item, index) => (
-                     <SmallButton key={index}>{index + 1}</SmallButton>
+                  .map((item) => (
+                     <Grow in={true} key={item}>
+                        <SmallButton>{item + 1}</SmallButton>
+                     </Grow>
                   ))}
             </PaginationItemsWrapper>
 
-            <ArrowBtn direction="right" />
+            <ArrowBtn onClick={handleArrowNextClick} direction="right" />
          </Inner>
       </Wrapper>
    );
