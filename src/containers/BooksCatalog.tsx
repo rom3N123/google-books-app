@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Fade } from "@material-ui/core";
 import { BooksList, Pagination } from ".";
 import { Container } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
@@ -22,7 +23,9 @@ const Books: React.FC = () => {
                      </SearchResult>
                   )}
 
-                  <BooksList />
+                  <Fade in={true}>
+                     <BooksList />
+                  </Fade>
                </>
             )}
 

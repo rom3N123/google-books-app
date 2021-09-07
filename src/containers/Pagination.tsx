@@ -68,7 +68,7 @@ const Pagination: React.FC = () => {
 
    React.useEffect(() => {
       if (foundResults) {
-         let calculatedItems = Math.floor(foundResults / 30);
+         let calculatedItems = Math.round(foundResults / 30);
 
          // @ts-ignore
          setPaginationItems([...Array(calculatedItems).keys()]);
