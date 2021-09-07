@@ -36,7 +36,7 @@ const BookItem: React.FC<
 
                <Title onClick={onBookClick}>{title}</Title>
 
-               <Author>{authors && authors.join(", ")}</Author>
+               <Author>{authors && authors[0]}</Author>
             </BookInfo>
          </Inner>
       </Wrapper>
