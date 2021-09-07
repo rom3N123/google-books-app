@@ -45,16 +45,15 @@ const BooksList: React.FC = ({ ...props }) => {
             )}
          </Inner>
 
-         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку 
+         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку  */}
          {!!state.books.items.length &&
             (state.fetchStatus.addBooksStatus ? (
                <Loading>Загрузка..</Loading>
             ) : (
                <ButtonWrapper>
-                  <LoadMoreBtn />
+                  <Pagination />
                </ButtonWrapper>
-            ))} */}
-         <Pagination />
+            ))}
       </Wrapper>
    );
 };
@@ -86,8 +85,10 @@ const Inner = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-   text-align: center;
    margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 `;
 
 const Loading = styled.p`
