@@ -1,15 +1,12 @@
 import React from "react";
-import IconButton from "./IconButton";
-
-import arrowLeftIconSvg from "../../assets/left-arrow.svg";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { IconButton } from "@material-ui/core";
 
 function BackBtn({ ...props }) {
    return (
-      <IconButton
-         {...props}
-         imageSrc={arrowLeftIconSvg}
-         imageAlt={"Back arrow image"}
-      />
+      <IconButton size="small">
+         <ArrowBackIcon fontSize="large" />
+      </IconButton>
    );
 }
 
