@@ -4,6 +4,7 @@ import { BookItem, LoadMoreBtn } from "../components";
 import { SET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";
+import { Pagination } from ".";
 
 const BooksList: React.FC = ({ ...props }) => {
    const state = useAppSelector((state) => state);
@@ -44,7 +45,7 @@ const BooksList: React.FC = ({ ...props }) => {
             )}
          </Inner>
 
-         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку  */}
+         {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку 
          {!!state.books.items.length &&
             (state.fetchStatus.addBooksStatus ? (
                <Loading>Загрузка..</Loading>
@@ -52,7 +53,8 @@ const BooksList: React.FC = ({ ...props }) => {
                <ButtonWrapper>
                   <LoadMoreBtn />
                </ButtonWrapper>
-            ))}
+            ))} */}
+         <Pagination />
       </Wrapper>
    );
 };
