@@ -19,9 +19,13 @@ function SmallButton({
    childrenColor = "#262626",
    hoverBackgroundColor = "#f5efef",
    hoverColor = "none",
-}: ISmallButton & { children: React.ReactNode }) {
+   onClick,
+}: ISmallButton & {
+   children: React.ReactNode;
+} & React.HTMLAttributes<HTMLElement>) {
    return (
       <Button
+         onClick={onClick}
          width={width}
          height={height}
          backgroundColor={backgroundColor}
