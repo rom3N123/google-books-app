@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BookItem, LoadMoreBtn } from "../components";
+import { BookItem } from "../components";
 import { SET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";

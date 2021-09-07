@@ -18,7 +18,6 @@ function ArrowBtn({
          childrenColor="#fff"
          backgroundColor="#262626"
          hoverBackgroundColor="#555454"
-         {...props}
       >
          {direction === "left" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       </SmallButton>

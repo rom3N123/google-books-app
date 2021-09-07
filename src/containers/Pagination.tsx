@@ -3,9 +3,12 @@ import React from "react";
 import styled from "styled-components/macro";
 import ArrowBtn from "../components/Buttons/ArrowBtn";
 import SmallButton from "../components/SmallButton";
+import { useApi } from "../hooks";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Pagination: React.FC = () => {
+   const { loadMoreBooks } = useApi();
+
    const foundResults = useAppSelector((state) => state.books.totalItems);
 
    const [paginationItems, setPaginationItems] = React.useState<number[]>([]);
@@ -45,11 +48,11 @@ const Pagination: React.FC = () => {
       }
    };
 
-   console.log(maxVisibleIndex);
-   console.log(minVisibleIndex);
-
    const handleArrowNextClick = () => calculateItems("next");
    const handleArrowPrevClick = () => calculateItems("prev");
+   const handleLoadBooks = (startIndex: number) => {
+      loadMoreBooks(startIndex);
+   };
 
    React.useEffect(() => {
       if (foundResults) {
@@ -70,7 +73,11 @@ const Pagination: React.FC = () => {
                   .slice(minVisibleIndex, maxVisibleIndex)
                   .map((item) => (
                      <Grow in={true} key={item}>
-                        <SmallButton>{item + 1}</SmallButton>
+                        <SmallButton
+                           onClick={() => handleLoadBooks((item + 1) * 30)}
+                        >
+                           {item + 1}
+                        </SmallButton>
                      </Grow>
                   ))}
             </PaginationItemsWrapper>
