@@ -55,7 +55,7 @@ const Search: React.FC = () => {
                   />
 
                   <ButtonWrapper>
-                     <SearchBtn type="submit" />
+                     <SearchBtn />
                   </ButtonWrapper>
                </SearchInnerWrapper>
 
