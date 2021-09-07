@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Fade } from "@material-ui/core";
 import { BooksList, Pagination } from ".";
-import { Container, Loading } from "../components";
+import { Loading } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Books: React.FC = () => {
@@ -12,7 +12,7 @@ const Books: React.FC = () => {
 
    return (
       <Wrapper>
-         <Container>
+         <Inner>
             {fetchStatus.setBooksStatus ? (
                <LoadingWrapper>
                   <Loading />
@@ -36,7 +36,7 @@ const Books: React.FC = () => {
                   <Pagination />
                </PaginationWrapper>
             )}
-         </Container>
+         </Inner>
       </Wrapper>
    );
 };
@@ -47,6 +47,10 @@ const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
    padding-top: 20px;
+`;
+
+const Inner = styled.div`
+   padding: 15px;
 `;
 
 const SearchResult = styled.h3`

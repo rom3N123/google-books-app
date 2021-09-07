@@ -64,7 +64,7 @@ const Inner = styled.div`
 
    @media (min-width: 769px) {
       .book-item {
-         flex-basis: calc(100% / 4 - 20px);
+         flex-basis: calc(100% / 6 - 20px);
       }
    }
 
