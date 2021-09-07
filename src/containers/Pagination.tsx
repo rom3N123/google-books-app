@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import ArrowBtn from "../components/Buttons/ArrowBtn";
 import SmallButton from "../components/SmallButton";
 import { useAppSelector } from "../redux/storeHooks";
 
@@ -26,6 +27,8 @@ const Pagination: React.FC = () => {
    return (
       <Wrapper>
          <Inner>
+            <ArrowBtn direction="left" />
+
             <PaginationItemsWrapper>
                {paginationItems
                   .slice(minVisibleIndex, maxVisibleIndex)
@@ -33,6 +36,8 @@ const Pagination: React.FC = () => {
                      <SmallButton key={index}>{index + 1}</SmallButton>
                   ))}
             </PaginationItemsWrapper>
+
+            <ArrowBtn direction="right" />
          </Inner>
       </Wrapper>
    );
