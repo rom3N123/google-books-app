@@ -50,11 +50,11 @@ const useApi = () => {
    };
 
    const paginateBooks = async (startIndex: number) => {
+      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
+
       const query: string = state.query + "&startIndex=" + startIndex;
 
       const response = await $api.get("volumes?" + query);
-
-      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
       dispatch(
          SET_BOOKS({
