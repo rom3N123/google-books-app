@@ -22,7 +22,11 @@ const BookItem: React.FC<
    return (
       <Wrapper onClick={onBookClick} {...props}>
          <Inner>
-            <Thumbnail src={imageLinks?.thumbnail || ""} alt={title} />
+            <Thumbnail
+               className="thumbnail"
+               src={imageLinks?.thumbnail || ""}
+               alt={title}
+            />
 
             <BookInfo>
                <Category>{categories && categories[0]}</Category>
@@ -40,15 +44,15 @@ export default BookItem;
 
 const Wrapper = styled.div`
    background-color: #fff;
-   transition: all 0.3s ease;
-   border-radius: 6px;
-   border: 1px solid #ccc;
+   transition: all 0.3s cubic-bezier(0, 0, 1, 1.54);
    padding: 10px;
 
-   cursor: pointer;
+   background-color: rgba(0, 0, 0, 0.03);
 
    &:hover {
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+         rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+         rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
    }
 `;
 
@@ -56,6 +60,10 @@ const Inner = styled.div`
    display: flex;
    flex-direction: column;
    padding: 15px;
+
+   .thumbnail {
+      cursor: pointer;
+   }
 `;
 
 const BookInfo = styled.div`
@@ -68,6 +76,8 @@ const Title = styled.h4`
    margin: 5px 0;
    font-size: 1.25rem;
    font-weight: 600;
+
+   cursor: pointer;
 `;
 
 const Category = styled.p`

@@ -59,12 +59,12 @@ const Inner = styled.div`
    display: flex;
    flex-wrap: wrap;
 
-   gap: 20px;
+   gap: 30px;
    flex: 1 1;
 
    @media (min-width: 769px) {
       .book-item {
-         flex-basis: calc(100% / 6 - 20px);
+         flex-basis: calc(100% / 6 - 30px);
       }
    }
 
