@@ -6,7 +6,6 @@ interface IFetchStatus {
 
 export interface IFetchStatusState extends IFetchStatus {
    setBooksStatus: false;
-   addBooksStatus: false;
 }
 
 type FetchStatusPayload = string;
