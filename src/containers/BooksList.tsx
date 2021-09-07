@@ -44,7 +44,6 @@ const BooksList: React.FC = ({ ...props }) => {
                <p>Здесь будут отображаться книги</p>
             )}
          </Inner>
-
          {/* Если книги есть и книги загружаются - отображаем индикатор, нет - кнопку  */}
          {!!state.books.items.length &&
             (state.fetchStatus.addBooksStatus ? (
@@ -85,7 +84,7 @@ const Inner = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-   margin-top: 20px;
+   margin: 20px 0;
    display: flex;
    justify-content: center;
    align-items: center;
