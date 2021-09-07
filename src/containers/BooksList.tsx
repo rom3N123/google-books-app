@@ -24,27 +24,24 @@ const BooksList: React.FC = ({ ...props }) => {
 
    return (
       <Wrapper {...props}>
-         <Inner>
-            <>
-               {/* Если книги есть - проходимся по ним и рендерим */}
-               {!!state.books.items.length ? (
-                  state.books.items.map((apiBook: IApiBook) => (
-                     <BookItem
-                        className="book-item"
-                        key={apiBook.volumeInfo.title}
-                        onBookClick={() => handleBookClick(apiBook)}
-                        authors={apiBook.volumeInfo.authors}
-                        imageLinks={apiBook.volumeInfo.imageLinks}
-                        title={apiBook.volumeInfo.title}
-                        description={apiBook.volumeInfo.description}
-                        categories={apiBook.volumeInfo.categories}
-                     />
-                  ))
-               ) : (
-                  <p>Здесь будут отображаться книги</p>
-               )}
-            </>
-         </Inner>
+         {!!state.books.items.length ? (
+            <Inner>
+               {state.books.items.map((apiBook: IApiBook) => (
+                  <BookItem
+                     className="book-item"
+                     key={apiBook.volumeInfo.title}
+                     onBookClick={() => handleBookClick(apiBook)}
+                     authors={apiBook.volumeInfo.authors}
+                     imageLinks={apiBook.volumeInfo.imageLinks}
+                     title={apiBook.volumeInfo.title}
+                     description={apiBook.volumeInfo.description}
+                     categories={apiBook.volumeInfo.categories}
+                  />
+               ))}
+            </Inner>
+         ) : (
+            <Label>Here will be shown found books..</Label>
+         )}
       </Wrapper>
    );
 };
@@ -73,4 +70,11 @@ const Inner = styled.div`
          flex: 1 0 50%;
       }
    }
+`;
+
+const Label = styled.h3`
+   text-align: center;
+   font-size: 1.4rem;
+   font-weight: 400;
+   line-height: 1.5;
 `;
