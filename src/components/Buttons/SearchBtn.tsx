@@ -1,13 +1,13 @@
-import IconButton from "./IconButton";
-import searchIconSvg from "../../assets/search-icon.svg";
+import { IconButton } from "..";
+import SearchIcon from "@material-ui/icons/Search";
 
-const SearchBtn: React.FC<{ type: string }> = ({ ...props }) => {
+const SearchBtn: React.FC<React.HtmlHTMLAttributes<HTMLButtonElement>> = ({
+   ...props
+}) => {
    return (
-      <IconButton
-         {...props}
-         imageSrc={searchIconSvg}
-         imageAlt={"Search icon"}
-      />
+      <IconButton type="submit" width="30px" height="30px" {...props}>
+         <SearchIcon style={{ fontSize: "2.2rem" }} />
+      </IconButton>
    );
 };
 
