@@ -40,7 +40,6 @@ export default BookItem;
 
 const Wrapper = styled.div`
    background-color: #fff;
-
    transition: all 0.3s ease;
    border-radius: 6px;
    border: 1px solid #ccc;
@@ -56,7 +55,7 @@ const Wrapper = styled.div`
 const Inner = styled.div`
    display: flex;
    flex-direction: column;
-   padding: 20px;
+   padding: 15px;
 `;
 
 const BookInfo = styled.div`

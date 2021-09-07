@@ -67,11 +67,12 @@ const Inner = styled.div`
    display: flex;
    flex-wrap: wrap;
 
-   gap: 25px;
+   gap: 20px;
+   flex: 1 1;
 
    @media (min-width: 769px) {
       .book-item {
-         flex: 1 0 30%;
+         flex-basis: calc(100% / 4 - 20px);
       }
    }
 
