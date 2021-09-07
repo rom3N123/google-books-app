@@ -65,7 +65,7 @@ const Search: React.FC = () => {
                      labelTitle="Categories"
                      onChange={handleChange}
                      options={subjects}
-                     name="subjects"
+                     name="subject"
                   />
 
                   <SelectItem
