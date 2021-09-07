@@ -2,7 +2,7 @@ import { Grow } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components/macro";
 import ArrowBtn from "../components/Buttons/ArrowBtn";
-import SmallButton from "../components/SmallButton";
+import SmallButton from "../components/Buttons/IconButton";
 import { useApi } from "../hooks";
 import { useAppSelector } from "../redux/storeHooks";
 
