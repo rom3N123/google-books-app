@@ -4,9 +4,12 @@ import { useApi } from "../hooks";
 import { Container, Input, SearchBtn } from "../components";
 import { ISearchParams } from "../interfaces";
 import { SelectItem } from ".";
+import { useHistory } from "react-router";
 
 const Search: React.FC = () => {
    const { findBooks } = useApi();
+
+   const history = useHistory();
 
    const subjects = [
       "all",
@@ -31,6 +34,10 @@ const Search: React.FC = () => {
 
       if (!formState.searchValue) {
          return;
+      }
+
+      if (history.location.pathname !== "/") {
+         history.push("/");
       }
 
       findBooks(formState);

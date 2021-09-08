@@ -11,15 +11,6 @@ const BooksList: React.FC = ({ ...props }) => {
    const history = useHistory();
 
    const handleBookClick = (apiBook: IApiBook): void => {
-      // const bookItem: IBook = {
-      //    authors: apiBook.volumeInfo.authors,
-      //    categories: apiBook.volumeInfo.categories,
-      //    description: apiBook.volumeInfo.description,
-      //    imageLinks: apiBook.volumeInfo.imageLinks,
-      //    title: apiBook.volumeInfo.title,
-      // };
-      // dispatch(SET_BOOK(bookItem));
-
       history.push("/books/" + apiBook.id);
    };
 

@@ -76,8 +76,6 @@ const Pagination: React.FC = () => {
       }
    }, [foundResults, paginationSize]);
 
-   console.log(activePagination);
-
    return (
       <Wrapper>
          <Inner>
