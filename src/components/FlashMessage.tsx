@@ -5,15 +5,15 @@ import { Alert } from ".";
 interface IFlashMessageProps {
    type: "error" | "info" | "success" | "warning";
    message: string;
-   errorCode?: number;
    open: boolean;
+   setOpen(flashMessage: null): void;
 }
 
 const FlashMessage: React.FC<IFlashMessageProps> = ({
    type,
    message,
-   errorCode,
    open,
+   setOpen,
 }) => {
    return (
       <Snackbar
@@ -23,10 +23,9 @@ const FlashMessage: React.FC<IFlashMessageProps> = ({
          }}
          open={open}
          autoHideDuration={5000}
+         onClose={() => setOpen(null)}
       >
-         <Alert severity={type}>{`${message}. ${
-            errorCode ? "Код ошибки : " + errorCode : ""
-         }`}</Alert>
+         <Alert severity={type}>{message}</Alert>
       </Snackbar>
    );
 };

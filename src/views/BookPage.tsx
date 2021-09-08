@@ -16,7 +16,7 @@ const BookPage: React.FC = () => {
 
    const { getBookData } = useApi();
 
-   const [book, setBook] = React.useState<IBook | null>(null);
+   const [book, setBook] = React.useState<IBook | null | undefined>(null);
 
    React.useEffect(() => {
       const fetchBookData = async () => {

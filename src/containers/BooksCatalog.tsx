@@ -12,7 +12,7 @@ const Books: React.FC = () => {
 
    const fetchStatus = useAppSelector((state) => state.fetchStatus);
 
-   const location = useLocation<IFlashMessageParams>();
+   const location = useLocation<{ flashMessage: IFlashMessageParams }>();
 
    // Flash message state
 
@@ -20,12 +20,10 @@ const Books: React.FC = () => {
       React.useState<IFlashMessageParams | null>(null);
 
    React.useEffect(() => {
-      if (location.state) {
-         setFlashMessage(location.state);
+      if (location.state && location.state.flashMessage) {
+         setFlashMessage(location.state.flashMessage);
       }
    }, [location.state]);
-
-   console.log(location.state);
 
    return (
       <Wrapper>
@@ -33,8 +31,8 @@ const Books: React.FC = () => {
             <FlashMessage
                type={flashMessage.type}
                message={flashMessage.message}
-               errorCode={flashMessage.errorCode}
                open={!!flashMessage}
+               setOpen={setFlashMessage}
             />
          )}
 

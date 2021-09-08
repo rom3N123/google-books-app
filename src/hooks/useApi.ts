@@ -1,10 +1,12 @@
+import { useHistory } from "react-router";
 import { useAppSelector } from "./../redux/storeHooks";
 import $api from "../http/axios";
 import { useQuery } from ".";
-import { IApiBook, ISearchParams } from "../interfaces";
+import { IApiBook, IFlashMessageParams, ISearchParams } from "../interfaces";
 import { SET_BOOKS } from "../redux/reducers/booksReducer";
 import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
 import { useAppDispatch } from "../redux/storeHooks";
+import { AxiosError } from "axios";
 
 interface IApiBooksResponse {
    kind: string;
@@ -14,6 +16,8 @@ interface IApiBooksResponse {
 
 const useApi = () => {
    const state = useAppSelector((state) => state);
+
+   const history = useHistory();
 
    const dispatch = useAppDispatch();
 
@@ -59,15 +63,27 @@ const useApi = () => {
    };
 
    const getBookData = async (id: string) => {
-      const response = await $api.get<IApiBook>("volumes/" + id);
+      try {
+         const response = await $api.get<IApiBook>("volumes/" + id);
 
-      return {
-         authors: response.data.volumeInfo.authors,
-         categories: response.data.volumeInfo.categories,
-         description: response.data.volumeInfo.description,
-         imageLinks: response.data.volumeInfo.imageLinks,
-         title: response.data.volumeInfo.title,
-      };
+         return {
+            authors: response.data.volumeInfo.authors,
+            categories: response.data.volumeInfo.categories,
+            description: response.data.volumeInfo.description,
+            imageLinks: response.data.volumeInfo.imageLinks,
+            title: response.data.volumeInfo.title,
+         };
+      } catch (err: any) {
+         history.push({
+            pathname: "/",
+            state: {
+               flashMessage: {
+                  type: "error",
+                  message: err.message,
+               } as IFlashMessageParams,
+            },
+         });
+      }
    };
 
    return { paginateBooks, findBooks, getBookData };
