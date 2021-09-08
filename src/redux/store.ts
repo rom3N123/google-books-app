@@ -1,4 +1,4 @@
-import { books, fetchStatus, query, book } from "./reducers";
+import { books, fetchStatus, query } from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
@@ -6,7 +6,6 @@ const store = configureStore({
       books,
       fetchStatus,
       query,
-      book,
    },
 });
 

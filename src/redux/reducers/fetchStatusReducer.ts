@@ -12,7 +12,6 @@ type FetchStatusPayload = string;
 
 const initialState: IFetchStatusState = {
    setBooksStatus: false,
-   addBooksStatus: false,
 };
 
 const fetchStatusSlice = createSlice({
