@@ -1,13 +1,14 @@
-import { Grow } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components/macro";
-import ArrowBtn from "../components/Buttons/ArrowBtn";
-import SmallButton from "../components/Buttons/IconButton";
-import { useApi } from "../hooks";
+import { Grow } from "@material-ui/core";
+import { ArrowBtn, IconButton } from "../components";
+import { useApi, usePagination } from "../hooks";
 import { useAppSelector } from "../redux/storeHooks";
 
 const Pagination: React.FC = () => {
    const { paginateBooks } = useApi();
+
+   const { paginationSize } = usePagination();
 
    const foundResults = useAppSelector((state) => state.books.totalItems);
    const [paginationItems, setPaginationItems] = React.useState<number[]>([]);
@@ -61,19 +62,19 @@ const Pagination: React.FC = () => {
          return;
       }
 
-      const startIndex = value * 30;
+      const startIndex = value * paginationSize;
       loadBooks(startIndex);
       setActivePagination(value + 1);
    };
 
    React.useEffect(() => {
       if (foundResults) {
-         let calculatedItems = Math.round(foundResults / 30);
+         let calculatedItems = Math.round(foundResults / paginationSize);
 
          // @ts-ignore
          setPaginationItems([...Array(calculatedItems).keys()]);
       }
-   }, [foundResults]);
+   }, [foundResults, paginationSize]);
 
    return (
       <Wrapper>
@@ -85,14 +86,14 @@ const Pagination: React.FC = () => {
                   .slice(minVisibleIndex, maxVisibleIndex)
                   .map((value) => (
                      <Grow in={true} key={value}>
-                        <SmallButton
+                        <IconButton
                            backgroundColor={`${
                               value + 1 === activePagination ? "#ccc" : ""
                            }`}
                            onClick={() => handleButtonClick(value)}
                         >
                            {value + 1}
-                        </SmallButton>
+                        </IconButton>
                      </Grow>
                   ))}
             </PaginationItemsWrapper>
