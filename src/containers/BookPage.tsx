@@ -48,7 +48,7 @@ const Inner = styled.div`
 
 const ItemsWrapper = styled.div`
    display: flex;
-   align-items: center;
+   align-items: stretch;
 
    @media (min-width: 768px) {
       .book-page-thumbnail {

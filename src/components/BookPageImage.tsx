@@ -9,6 +9,7 @@ const BookPageImage: React.FC<
    return (
       <Wrapper {...props}>
          <Thumbnail
+            height="300px"
             src={thumbnail || ""}
             alt={thumbnailAlt || "No alt message"}
          />
@@ -19,8 +20,7 @@ const BookPageImage: React.FC<
 export default BookPageImage;
 
 const Wrapper = styled.div`
-   background-color: #ccc;
-   padding: 30px;
+   background-color: #f3f2f1;
    display: flex;
    justify-content: center;
    align-items: center;
