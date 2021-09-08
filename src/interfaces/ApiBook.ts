@@ -1,6 +1,7 @@
 import { IBookImages } from ".";
 
 interface IApiBook {
+   id: string;
    volumeInfo: {
       title: string;
       authors: string[] | null;
