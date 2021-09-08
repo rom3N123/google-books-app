@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/google-books-app/static/js/main.535d8d19.chunk.js",
+    "main.js.map": "/google-books-app/static/js/main.535d8d19.chunk.js.map",
+    "runtime-main.js": "/google-books-app/static/js/runtime-main.0ec088e2.js",
+    "runtime-main.js.map": "/google-books-app/static/js/runtime-main.0ec088e2.js.map",
+    "static/css/2.679831fc.chunk.css": "/google-books-app/static/css/2.679831fc.chunk.css",
+    "static/js/2.eed2dca9.chunk.js": "/google-books-app/static/js/2.eed2dca9.chunk.js",
+    "static/js/2.eed2dca9.chunk.js.map": "/google-books-app/static/js/2.eed2dca9.chunk.js.map",
+    "index.html": "/google-books-app/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/google-books-app/static/css/2.679831fc.chunk.css.map",
+    "static/js/2.eed2dca9.chunk.js.LICENSE.txt": "/google-books-app/static/js/2.eed2dca9.chunk.js.LICENSE.txt",
+    "static/media/header-wallpaper.7973e864.jpg": "/google-books-app/static/media/header-wallpaper.7973e864.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0ec088e2.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.eed2dca9.chunk.js",
+    "static/js/main.535d8d19.chunk.js"
+  ]
+}
