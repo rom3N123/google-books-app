@@ -7,3 +7,4 @@ export { default as BackBtn } from "./Buttons/BackBtn";
 export { default as IconButton } from "./Buttons/IconButton";
 export { default as Thumbnail } from "./Thumbnail";
 export { default as Loading } from "./Loading";
+export { default as ArrowBtn } from "./Buttons/ArrowBtn";
