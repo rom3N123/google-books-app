@@ -7,11 +7,7 @@ const $api = axios.create({
 });
 
 $api.interceptors.request.use((config) => {
-   if (config.url.includes("volumes?")) {
-      config.url += "&maxResults=30";
-   }
-
-   config.url += "&key=" + apiKey;
+   config.params = { ...config.params, key: apiKey };
 
    return config;
 });

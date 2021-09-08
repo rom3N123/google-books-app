@@ -1,8 +1,8 @@
+import { usePagination } from ".";
 import $api from "../http/axios";
 import { IApiBook, ISearchParams } from "../interfaces";
 import { SET_BOOKS } from "../redux/reducers/booksReducer";
 import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
-import { SET_QUERY } from "../redux/reducers/queryReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 
 interface IApiResponse {
@@ -12,32 +12,25 @@ interface IApiResponse {
 }
 
 const useApi = () => {
+   const { paginationSize } = usePagination();
+
    const state = useAppSelector((state) => state);
 
    const dispatch = useAppDispatch();
 
    const findBooks = async (params: ISearchParams) => {
-      let searchValue: string = getSystemReadableName(params.searchValue);
-
-      let query: string = `q=${searchValue}`;
-
-      if (params.subject !== "all") {
-         query += "+subject:" + params.subject;
-      }
-
-      if (params.startIndex) {
-         query += "&startIndex=" + params.startIndex;
-      }
-
-      if (params.orderBy) {
-         query += "&orderBy=" + params.orderBy;
-      }
-
-      dispatch(SET_QUERY(query));
+      let query: string = getQuery(params.searchValue, params.subject);
 
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
-      const response = await $api.get<IApiResponse>(`volumes?` + query);
+      const response = await $api.get<IApiResponse>(`volumes`, {
+         params: {
+            q: query,
+            startIndex: params.startIndex,
+            orderBy: params.orderBy,
+            maxResults: paginationSize,
+         },
+      });
 
       dispatch(
          SET_BOOKS({
@@ -65,11 +58,19 @@ const useApi = () => {
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
    };
 
-   const getSystemReadableName = (name: string): string => {
-      return name
+   const getQuery = (searchValue: string, subject: string): string => {
+      let query: string = searchValue
          .split(" ")
          .map((str) => str.toLowerCase())
          .join("+");
+
+      if (subject !== "all") {
+         query += "+subject:" + subject;
+      }
+
+      console.log(query);
+
+      return query;
    };
 
    return { paginateBooks, findBooks };
