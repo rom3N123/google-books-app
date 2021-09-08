@@ -1,17 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BookItem } from "../components";
-import { SET_BOOK } from "../redux/reducers/bookPageReducer";
-import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
-import { IApiBook, IBook } from "../interfaces";
+import { useAppSelector } from "../redux/storeHooks";
+import { IApiBook } from "../interfaces";
 import { useHistory } from "react-router";
 
 const BooksList: React.FC = ({ ...props }) => {
    const state = useAppSelector((state) => state);
 
    const history = useHistory();
-
-   const dispatch = useAppDispatch();
 
    const handleBookClick = (apiBook: IApiBook): void => {
       // const bookItem: IBook = {

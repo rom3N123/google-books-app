@@ -1,23 +1,25 @@
+import { Grow } from "@material-ui/core";
 import React from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components/macro";
 import { BackBtn } from "../components";
-import { UNSET_BOOK } from "../redux/reducers/bookPageReducer";
-import { useAppDispatch } from "../redux/storeHooks";
 
 const BookPageHeader: React.FC = () => {
-   const dispatch = useAppDispatch();
+   const history = useHistory();
 
    const handleGoBack = () => {
-      dispatch(UNSET_BOOK());
+      history.push("/");
    };
 
    return (
       <Wrapper>
-         <Inner onClick={handleGoBack}>
-            <BackBtn className="back-icon" />
+         <Grow in={true}>
+            <Inner onClick={handleGoBack}>
+               <BackBtn className="back-icon" />
 
-            <Label>Back</Label>
-         </Inner>
+               <Label>Back</Label>
+            </Inner>
+         </Grow>
       </Wrapper>
    );
 };

@@ -6,7 +6,7 @@ import { SET_BOOKS } from "../redux/reducers/booksReducer";
 import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
 import { useAppDispatch } from "../redux/storeHooks";
 
-interface IApiResponse {
+interface IApiBooksResponse {
    kind: string;
    totalItems: number;
    items: IApiBook[];
@@ -24,7 +24,7 @@ const useApi = () => {
 
       const queryParams = getQueryParams(searchParams);
 
-      const response = await $api.get<IApiResponse>(`volumes`, {
+      const response = await $api.get<IApiBooksResponse>(`volumes`, {
          params: queryParams,
       });
 
@@ -58,7 +58,19 @@ const useApi = () => {
       }
    };
 
-   return { paginateBooks, findBooks };
+   const getBookData = async (id: string) => {
+      const response = await $api.get<IApiBook>("volumes/" + id);
+
+      return {
+         authors: response.data.volumeInfo.authors,
+         categories: response.data.volumeInfo.categories,
+         description: response.data.volumeInfo.description,
+         imageLinks: response.data.volumeInfo.imageLinks,
+         title: response.data.volumeInfo.title,
+      };
+   };
+
+   return { paginateBooks, findBooks, getBookData };
 };
 
 export default useApi;

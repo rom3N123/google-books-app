@@ -1,6 +1,6 @@
-import { BookPage, Header } from "./containers";
+import { Header } from "./containers";
 import { Route, Switch } from "react-router-dom";
-import { Home } from "./views";
+import { Home, BookPage } from "./views";
 
 const App: React.FC = () => {
    return (
