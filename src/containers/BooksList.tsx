@@ -4,22 +4,26 @@ import { BookItem } from "../components";
 import { SET_BOOK } from "../redux/reducers/bookPageReducer";
 import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
 import { IApiBook, IBook } from "../interfaces";
+import { useHistory } from "react-router";
 
 const BooksList: React.FC = ({ ...props }) => {
    const state = useAppSelector((state) => state);
 
+   const history = useHistory();
+
    const dispatch = useAppDispatch();
 
    const handleBookClick = (apiBook: IApiBook): void => {
-      const bookItem: IBook = {
-         authors: apiBook.volumeInfo.authors,
-         categories: apiBook.volumeInfo.categories,
-         description: apiBook.volumeInfo.description,
-         imageLinks: apiBook.volumeInfo.imageLinks,
-         title: apiBook.volumeInfo.title,
-      };
+      // const bookItem: IBook = {
+      //    authors: apiBook.volumeInfo.authors,
+      //    categories: apiBook.volumeInfo.categories,
+      //    description: apiBook.volumeInfo.description,
+      //    imageLinks: apiBook.volumeInfo.imageLinks,
+      //    title: apiBook.volumeInfo.title,
+      // };
+      // dispatch(SET_BOOK(bookItem));
 
-      dispatch(SET_BOOK(bookItem));
+      history.push("/books/" + apiBook.id);
    };
 
    return (

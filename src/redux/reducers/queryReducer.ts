@@ -1,12 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: string = "";
+interface IQuery {
+   params: IQueryParams | null;
+}
+
+type IQueryParams = {
+   q: string;
+   orderBy: string;
+   subject: string;
+   startIndex?: number;
+};
+
+const initialState: IQuery = {
+   params: null,
+};
 
 const querySlice = createSlice({
    name: "query",
    initialState,
    reducers: {
-      SET_QUERY: (state, action: PayloadAction<string>) => action.payload,
+      SET_QUERY: (state, action: PayloadAction<IQuery>) => action.payload,
    },
 });
 
