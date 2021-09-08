@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/macro";
 import { BookPageImage, BookPageInfo, BookPageHeader } from ".";
 import { IBookState } from "../redux/reducers/bookPageReducer";
-
 import { useAppSelector } from "../redux/storeHooks";
 
 const BookPage: React.FC = () => {

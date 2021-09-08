@@ -1,13 +1,15 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "..";
 
-function BackBtn({ ...props }) {
+const BackBtn: React.FC<HTMLAttributes<HTMLButtonElement & HTMLDivElement>> = ({
+   ...props
+}) => {
    return (
-      <IconButton size="small">
+      <IconButton width="40px" height="40px" {...props}>
          <ArrowBackIcon fontSize="large" />
       </IconButton>
    );
-}
+};
 
 export default BackBtn;

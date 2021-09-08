@@ -25,7 +25,9 @@ function SmallButton({
    onClick,
    fontSize = "0.95rem",
    type,
-}: ISmallButtonStyles & React.HTMLAttributes<HTMLButtonElement>) {
+   className,
+}: ISmallButtonStyles &
+   React.HTMLAttributes<HTMLButtonElement | HTMLDivElement>) {
    return (
       <Button
          onClick={onClick}
@@ -37,6 +39,7 @@ function SmallButton({
          hoverColor={hoverColor}
          type={type}
          fontSize={fontSize}
+         className={className}
       >
          {children}
       </Button>
