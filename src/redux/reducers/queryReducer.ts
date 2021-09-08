@@ -13,10 +13,11 @@ const querySlice = createSlice({
    name: "query",
    initialState,
    reducers: {
-      SET_QUERY: (state, action: PayloadAction<IQuery>) => action.payload,
+      SET_QUERY_PARAMS: (state, action: PayloadAction<IQuery>) =>
+         action.payload,
    },
 });
 
-export const { SET_QUERY } = querySlice.actions;
+export const { SET_QUERY_PARAMS } = querySlice.actions;
 
 export default querySlice.reducer;

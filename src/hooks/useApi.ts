@@ -1,9 +1,10 @@
-import { usePagination } from ".";
+import { useAppSelector } from "./../redux/storeHooks";
 import $api from "../http/axios";
+import { useQuery } from ".";
 import { IApiBook, ISearchParams } from "../interfaces";
 import { SET_BOOKS } from "../redux/reducers/booksReducer";
 import { CHANGE_FETCH_STATUS } from "../redux/reducers/fetchStatusReducer";
-import { useAppDispatch, useAppSelector } from "../redux/storeHooks";
+import { useAppDispatch } from "../redux/storeHooks";
 
 interface IApiResponse {
    kind: string;
@@ -12,24 +13,19 @@ interface IApiResponse {
 }
 
 const useApi = () => {
-   const { paginationSize } = usePagination();
-
    const state = useAppSelector((state) => state);
 
    const dispatch = useAppDispatch();
 
-   const findBooks = async (params: ISearchParams) => {
-      let query: string = getQuery(params.searchValue, params.subject);
+   const { getQueryParams, setQuery } = useQuery();
 
+   const findBooks = async (searchParams: ISearchParams) => {
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
+      const queryParams = getQueryParams(searchParams);
+
       const response = await $api.get<IApiResponse>(`volumes`, {
-         params: {
-            q: query,
-            startIndex: params.startIndex,
-            orderBy: params.orderBy,
-            maxResults: paginationSize,
-         },
+         params: queryParams,
       });
 
       dispatch(
@@ -40,37 +36,26 @@ const useApi = () => {
       );
 
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
+
+      setQuery(searchParams);
    };
 
    const paginateBooks = async (startIndex: number) => {
       dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
 
-      const query: string = state.query + "&startIndex=" + startIndex;
+      if (state.query.params) {
+         const queryParams = getQueryParams(state.query.params, startIndex);
 
-      const response = await $api.get("volumes?" + query);
+         const response = await $api.get("volumes?", { params: queryParams });
 
-      dispatch(
-         SET_BOOKS({
-            items: response.data.items,
-         })
-      );
+         dispatch(
+            SET_BOOKS({
+               items: response.data.items,
+            })
+         );
 
-      dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
-   };
-
-   const getQuery = (searchValue: string, subject: string): string => {
-      let query: string = searchValue
-         .split(" ")
-         .map((str) => str.toLowerCase())
-         .join("+");
-
-      if (subject !== "all") {
-         query += "+subject:" + subject;
+         dispatch(CHANGE_FETCH_STATUS("setBooksStatus"));
       }
-
-      console.log(query);
-
-      return query;
    };
 
    return { paginateBooks, findBooks };

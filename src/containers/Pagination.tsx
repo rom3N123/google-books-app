@@ -53,8 +53,8 @@ const Pagination: React.FC = () => {
 
    const handleArrowPrevClick = () => calculateItems("prev");
 
-   const loadBooks = (startIndex: number) => {
-      paginateBooks(startIndex);
+   const loadBooks = (page: number) => {
+      paginateBooks(page);
    };
 
    const handleButtonClick = (value: number): void => {
@@ -62,8 +62,8 @@ const Pagination: React.FC = () => {
          return;
       }
 
-      const startIndex = value * paginationSize;
-      loadBooks(startIndex);
+      const page = value * paginationSize;
+      loadBooks(page);
       setActivePagination(value + 1);
    };
 
@@ -75,6 +75,8 @@ const Pagination: React.FC = () => {
          setPaginationItems([...Array(calculatedItems).keys()]);
       }
    }, [foundResults, paginationSize]);
+
+   console.log(activePagination);
 
    return (
       <Wrapper>
