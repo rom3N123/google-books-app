@@ -9,5 +9,4 @@ export { default as Thumbnail } from "./Thumbnail";
 export { default as Loading } from "./Loading";
 export { default as ArrowBtn } from "./Buttons/ArrowBtn";
 export { default as FlashMessage } from "./FlashMessage";
-export { default as CrossBtn } from "./Buttons/CrossBtn";
 export { default as Alert } from "./Alert";

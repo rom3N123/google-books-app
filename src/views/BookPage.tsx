@@ -12,9 +12,9 @@ interface BookPageParams {
 }
 
 const BookPage: React.FC = () => {
-   const { getBookData } = useApi();
-
    const { id } = useParams<BookPageParams>();
+
+   const { getBookData } = useApi();
 
    const [book, setBook] = React.useState<IBook | null>(null);
 

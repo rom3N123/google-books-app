@@ -7,3 +7,4 @@ export type { default as IBooksStore } from "./BooksStore";
 export type { default as ISelect } from "./Select";
 export type { default as IContext } from "./Context";
 export type { default as IQueryParams } from "./QueryParams";
+export type { default as IFlashMessageParams } from "./FlashMessageParams";

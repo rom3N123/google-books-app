@@ -2,16 +2,42 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Fade, Grow } from "@material-ui/core";
 import { BooksList, Pagination } from ".";
-import { Loading } from "../components";
+import { FlashMessage, Loading } from "../components";
 import { useAppSelector } from "../redux/storeHooks";
+import { useLocation } from "react-router-dom";
+import { IFlashMessageParams } from "../interfaces";
 
 const Books: React.FC = () => {
    const state = useAppSelector((state) => state);
 
    const fetchStatus = useAppSelector((state) => state.fetchStatus);
 
+   const location = useLocation<IFlashMessageParams>();
+
+   // Flash message state
+
+   const [flashMessage, setFlashMessage] =
+      React.useState<IFlashMessageParams | null>(null);
+
+   React.useEffect(() => {
+      if (location.state) {
+         setFlashMessage(location.state);
+      }
+   }, [location.state]);
+
+   console.log(location.state);
+
    return (
       <Wrapper>
+         {flashMessage && (
+            <FlashMessage
+               type={flashMessage.type}
+               message={flashMessage.message}
+               errorCode={flashMessage.errorCode}
+               open={!!flashMessage}
+            />
+         )}
+
          <Inner>
             {fetchStatus.setBooksStatus ? (
                <LoadingWrapper>
