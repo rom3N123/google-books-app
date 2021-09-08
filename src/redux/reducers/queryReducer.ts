@@ -1,15 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ISearchParams } from "../../interfaces";
 
 interface IQuery {
-   params: IQueryParams | null;
+   params: ISearchParams | null;
 }
-
-type IQueryParams = {
-   q: string;
-   orderBy: string;
-   subject: string;
-   startIndex?: number;
-};
 
 const initialState: IQuery = {
    params: null,
