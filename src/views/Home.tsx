@@ -1,7 +1,8 @@
 import React from "react";
+import { BooksCatalog } from "../containers";
 
 const Home: React.FC = () => {
-   return <div></div>;
+   return <BooksCatalog />;
 };
 
 export default Home;
