@@ -7,11 +7,15 @@ import GlobalStyles from "./globalStyles.ts";
 import store from "./redux/store.ts";
 import "normalize.css";
 
-ReactDOM.render(
-   <Provider store={store}>
-      <GlobalStyles />
+import { BrowserRouter as Router } from "react-router-dom";
 
-      <App />
-   </Provider>,
+ReactDOM.render(
+   <Router>
+      <Provider store={store}>
+         <GlobalStyles />
+
+         <App />
+      </Provider>
+   </Router>,
    document.getElementById("root")
 );

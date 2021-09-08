@@ -1,14 +1,17 @@
-import { BookPage, BooksCatalog, Header } from "./containers";
-import { useAppSelector } from "./redux/storeHooks";
+import { BookPage, Header } from "./containers";
+import { Route, Switch } from "react-router-dom";
+import { Home } from "./views";
 
 const App: React.FC = () => {
-   const state = useAppSelector((state) => state);
-
    return (
       <div className="App">
          <Header />
 
-         {(!state.book.item && <BooksCatalog />) || <BookPage />}
+         <Switch>
+            <Route exact path="/" component={Home} />
+
+            <Route exact path="/books/:id" component={BookPage} />
+         </Switch>
       </div>
    );
 };

@@ -1,11 +1,20 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { useParams } from "react-router";
 import { BookPageImage, BookPageInfo, BookPageHeader } from ".";
 import { IBookState } from "../redux/reducers/bookPageReducer";
 import { useAppSelector } from "../redux/storeHooks";
 
+interface BookPageParams {
+   id: string;
+}
+
 const BookPage: React.FC = () => {
+   const { id } = useParams<BookPageParams>();
+
    const book = useAppSelector((state): IBookState => state.book);
+
+   console.log(id);
 
    return (
       <Wrapper>
